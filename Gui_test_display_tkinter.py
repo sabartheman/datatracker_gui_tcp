@@ -45,6 +45,7 @@ class DataGui(Frame):
         self.clock()
 
         Label(self,height=3,bg="white", text="Time: ").grid(row=1, column=1,sticky=W)
+        Label(self,height=3,bg="white", text="Last Recieved: ").grid(row=1, column=3,sticky=W)
 
 
         Label(self, text="Tile data: ").grid(row=5, column=1,sticky=W)
@@ -113,42 +114,39 @@ class DataGui(Frame):
         Label(self, text="HIST_SA_1_P_3: ").grid(row=30, column=5, sticky=W)
         Label(self, text="HIST_SA_1_P_4: ").grid(row=30, column=7, sticky=W)
         Label(self, text="HIST_SA_1_P_5: ").grid(row=30, column=9, sticky=W)
+        Label(self, text="HIST_SA_1_P_6: ").grid(row=30, column=11, sticky=W)
 
         Label(self, text="HIST_SA_2_P_1: ").grid(row=31, column=1, sticky=W)
         Label(self, text="HIST_SA_2_P_2: ").grid(row=31, column=3, sticky=W)
         Label(self, text="HIST_SA_2_P_3: ").grid(row=31, column=5, sticky=W)
         Label(self, text="HIST_SA_2_P_4: ").grid(row=31, column=7, sticky=W)
         Label(self, text="HIST_SA_2_P_5: ").grid(row=31, column=9, sticky=W)
+        Label(self, text="HIST_SA_2_P_6: ").grid(row=31, column=11, sticky=W)
 
         Label(self, text="HIST_SA_3_P_1: ").grid(row=32, column=1, sticky=W)
         Label(self, text="HIST_SA_3_P_2: ").grid(row=32, column=3, sticky=W)
         Label(self, text="HIST_SA_3_P_3: ").grid(row=32, column=5, sticky=W)
         Label(self, text="HIST_SA_3_P_4: ").grid(row=32, column=7, sticky=W)
         Label(self, text="HIST_SA_3_P_5: ").grid(row=32, column=9, sticky=W)
+        Label(self, text="HIST_SA_3_P_6: ").grid(row=32, column=11, sticky=W)
 
         Label(self, text="HIST_BATT_V_1: ").grid(row=33, column=1, sticky=W)
         Label(self, text="HIST_BATT_V_2: ").grid(row=33, column=3, sticky=W)
         Label(self, text="HIST_BATT_V_3: ").grid(row=33, column=5, sticky=W)
         Label(self, text="HIST_BATT_V_4: ").grid(row=33, column=7, sticky=W)
         Label(self, text="HIST_BATT_V_5: ").grid(row=33, column=9, sticky=W)
+        Label(self, text="HIST_BATT_V_6: ").grid(row=33, column=11, sticky=W)
 
         Label(self, text="HIST_BATT_I_1: ").grid(row=34, column=1, sticky=W)
         Label(self, text="HIST_BATT_I_2: ").grid(row=34, column=3, sticky=W)
         Label(self, text="HIST_BATT_I_3: ").grid(row=34, column=5, sticky=W)
         Label(self, text="HIST_BATT_I_4: ").grid(row=34, column=7, sticky=W)
         Label(self, text="HIST_BATT_I_5: ").grid(row=34, column=9, sticky=W)
+        Label(self, text="HIST_BATT_I_6: ").grid(row=33, column=11, sticky=W)
 
-        #Label(self, text="MUX ADC   : ").grid(row=23, column=1, sticky=W)
-        #Label(self, text="HIST SA_Y : ").grid(row=24, column=3, sticky=W)
-        #Label(self, text="HIST SA_S : ").grid(row=24, column=1, sticky=W)
-        #Label(self, text="HIST VBAT1: ").grid(row=25, column=3, sticky=W)
-        #Label(self, text="HIST VBATV: ").grid(row=25, column=1, sticky=W)
-        #Label(self, text="HIST VBATI: ").grid(row=26, column=3, sticky=W)
-        #Label(self, text="CRC CHECK?: ").grid(row=26, column=1, sticky=W)
         self.updatePower(test_string_health)
-        #Label(self, justify=LEFT, wraplength=800, text=test_string_power.hex()).grid(row=15, column=2,sticky=W)
 
-        Label(self, text="Misc data: ").grid(row=100, column=1, sticky=W)
+        Label(self, text="Misc data/Powerchunk: ").grid(row=100, column=1, sticky=W)
 
 
     def updateTile(self,data):
@@ -158,7 +156,7 @@ class DataGui(Frame):
         Label(self, justify=LEFT, wraplength=400, text=data.hex()).grid(row=10, column=2,sticky=W)
 
     def updatePower(self,data):
-        DATAOFFSET = 26
+        DATAOFFSET = 29
 
         Label(self, justify=LEFT, wraplength=800, text=str(int(data[1+DATAOFFSET:4+DATAOFFSET].hex(),16))).grid(row=16, column=2,sticky=W)
         Label(self, justify=LEFT, wraplength=800, text=str(int(data[5+DATAOFFSET:8+DATAOFFSET].hex(),16))).grid(row=16, column=4,sticky=W)
@@ -175,8 +173,8 @@ class DataGui(Frame):
         Label(self, justify=LEFT, wraplength=800, text=data[25+DATAOFFSET:26+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
         Label(self, justify=LEFT, wraplength=800, text=data[27+DATAOFFSET:28+DATAOFFSET].hex()).grid(row=21, column=2,sticky=W)
         Label(self, justify=LEFT, wraplength=800, text=data[29+DATAOFFSET:30+DATAOFFSET].hex()).grid(row=21, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[32+DATAOFFSET:32+DATAOFFSET].hex()).grid(row=22, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[34+DATAOFFSET:34+DATAOFFSET].hex()).grid(row=22, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[31+DATAOFFSET:32+DATAOFFSET].hex()).grid(row=22, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[33+DATAOFFSET:34+DATAOFFSET].hex()).grid(row=22, column=4,sticky=W)
 
         #BATT TEMPS
         Label(self, justify=LEFT, wraplength=800, text=data[35+DATAOFFSET:36+DATAOFFSET].hex()).grid(row=23, column=2,sticky=W)
@@ -199,83 +197,79 @@ class DataGui(Frame):
         Label(self, justify=LEFT, wraplength=800, text=data[53+DATAOFFSET:54+DATAOFFSET].hex()).grid(row=25, column=6,sticky=W)
 
         #SAx_I
-        Label(self, justify=LEFT, wraplength=800, text=data[55+DATAOFFSET:56+DATAOFFSET].hex()).grid(row=26, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[55+DATAOFFSET:56+DATAOFFSET].hex()).grid(row=26, column=2,sticky=W)
         Label(self, justify=LEFT, wraplength=800, text=data[57+DATAOFFSET:58+DATAOFFSET].hex()).grid(row=26, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[59+DATAOFFSET:60+DATAOFFSET].hex()).grid(row=26, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[59+DATAOFFSET:60+DATAOFFSET].hex()).grid(row=26, column=6,sticky=W)
 
         #CURRENT STATS
-        Label(self, justify=LEFT, wraplength=800, text=data[61+DATAOFFSET:62+DATAOFFSET].hex()).grid(row=27, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[61+DATAOFFSET:62+DATAOFFSET].hex()).grid(row=27, column=2,sticky=W)
         Label(self, justify=LEFT, wraplength=800, text=data[63+DATAOFFSET:64+DATAOFFSET].hex()).grid(row=27, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[65+DATAOFFSET:66+DATAOFFSET].hex()).grid(row=27, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[67+DATAOFFSET:68+DATAOFFSET].hex()).grid(row=27, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[69+DATAOFFSET:70+DATAOFFSET].hex()).grid(row=27, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[65+DATAOFFSET:66+DATAOFFSET].hex()).grid(row=27, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[67+DATAOFFSET:68+DATAOFFSET].hex()).grid(row=27, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[69+DATAOFFSET:70+DATAOFFSET].hex()).grid(row=27, column=10,sticky=W)
 
         #SA TEMPS
-        Label(self, justify=LEFT, wraplength=800, text=data[71+DATAOFFSET:72+DATAOFFSET].hex()).grid(row=28, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[71+DATAOFFSET:72+DATAOFFSET].hex()).grid(row=28, column=2,sticky=W)
         Label(self, justify=LEFT, wraplength=800, text=data[73+DATAOFFSET:74+DATAOFFSET].hex()).grid(row=28, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[75+DATAOFFSET:76+DATAOFFSET].hex()).grid(row=28, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[77+DATAOFFSET:78+DATAOFFSET].hex()).grid(row=28, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[79+DATAOFFSET:80+DATAOFFSET].hex()).grid(row=28, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[75+DATAOFFSET:76+DATAOFFSET].hex()).grid(row=28, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[77+DATAOFFSET:78+DATAOFFSET].hex()).grid(row=28, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[79+DATAOFFSET:80+DATAOFFSET].hex()).grid(row=28, column=10,sticky=W)
 
         #3V3EPS_I
-        Label(self, justify=LEFT, wraplength=800, text=data[81+DATAOFFSET:82+DATAOFFSET].hex()).grid(row=20, column=204,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[83+DATAOFFSET:84+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[81+DATAOFFSET:82+DATAOFFSET].hex()).grid(row=29, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[83+DATAOFFSET:84+DATAOFFSET].hex()).grid(row=29, column=4,sticky=W)
 
         #HIST_SA_1
-        Label(self, justify=LEFT, wraplength=800, text=data[85+DATAOFFSET:86+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[87+DATAOFFSET:88+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[89+DATAOFFSET:90+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[91+DATAOFFSET:92+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[93+DATAOFFSET:94+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[95+DATAOFFSET:96+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[85+DATAOFFSET:86+DATAOFFSET].hex()).grid(row=30, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[87+DATAOFFSET:88+DATAOFFSET].hex()).grid(row=30, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[89+DATAOFFSET:90+DATAOFFSET].hex()).grid(row=30, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[91+DATAOFFSET:92+DATAOFFSET].hex()).grid(row=30, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[93+DATAOFFSET:94+DATAOFFSET].hex()).grid(row=30, column=10,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[95+DATAOFFSET:96+DATAOFFSET].hex()).grid(row=30, column=12,sticky=W)
 
         #HIST_SA_2
-        Label(self, justify=LEFT, wraplength=800, text=data[97+DATAOFFSET:98+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[99+DATAOFFSET:100+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[101+DATAOFFSET:102+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[103+DATAOFFSET:104+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[105+DATAOFFSET:106+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[107+DATAOFFSET:108+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[97+DATAOFFSET:98+DATAOFFSET].hex()).grid(row=31, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[99+DATAOFFSET:100+DATAOFFSET].hex()).grid(row=31, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[101+DATAOFFSET:102+DATAOFFSET].hex()).grid(row=31, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[103+DATAOFFSET:104+DATAOFFSET].hex()).grid(row=31, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[105+DATAOFFSET:106+DATAOFFSET].hex()).grid(row=31, column=10,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[107+DATAOFFSET:108+DATAOFFSET].hex()).grid(row=31, column=12,sticky=W)
 
         #HIST_SA_3
-        Label(self, justify=LEFT, wraplength=800, text=data[77+DATAOFFSET:78+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[79+DATAOFFSET:80+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[77+DATAOFFSET:78+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[79+DATAOFFSET:80+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[77+DATAOFFSET:78+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[79+DATAOFFSET:80+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[109+DATAOFFSET:110+DATAOFFSET].hex()).grid(row=32, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[111+DATAOFFSET:112+DATAOFFSET].hex()).grid(row=32, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[113+DATAOFFSET:114+DATAOFFSET].hex()).grid(row=32, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[115+DATAOFFSET:116+DATAOFFSET].hex()).grid(row=32, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[117+DATAOFFSET:118+DATAOFFSET].hex()).grid(row=32, column=10,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[119+DATAOFFSET:120+DATAOFFSET].hex()).grid(row=32, column=12,sticky=W)
 
         #HIST_BATT_V
-        Label(self, justify=LEFT, wraplength=800, text=data[77+DATAOFFSET:78+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[79+DATAOFFSET:80+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[77+DATAOFFSET:78+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[79+DATAOFFSET:80+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[77+DATAOFFSET:78+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[79+DATAOFFSET:80+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[121+DATAOFFSET:122+DATAOFFSET].hex()).grid(row=33, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[123+DATAOFFSET:124+DATAOFFSET].hex()).grid(row=33, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[125+DATAOFFSET:126+DATAOFFSET].hex()).grid(row=33, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[127+DATAOFFSET:128+DATAOFFSET].hex()).grid(row=33, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[129+DATAOFFSET:130+DATAOFFSET].hex()).grid(row=33, column=10,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[131+DATAOFFSET:132+DATAOFFSET].hex()).grid(row=33, column=12,sticky=W)
 
         #HIST_BATT_I
-        Label(self, justify=LEFT, wraplength=800, text=data[77+DATAOFFSET:78+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[79+DATAOFFSET:80+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[77+DATAOFFSET:78+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[79+DATAOFFSET:80+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[77+DATAOFFSET:78+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[79+DATAOFFSET:80+DATAOFFSET].hex()).grid(row=20, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[133+DATAOFFSET:134+DATAOFFSET].hex()).grid(row=34, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[135+DATAOFFSET:136+DATAOFFSET].hex()).grid(row=34, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[137+DATAOFFSET:138+DATAOFFSET].hex()).grid(row=34, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[139+DATAOFFSET:140+DATAOFFSET].hex()).grid(row=34, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[141+DATAOFFSET:142+DATAOFFSET].hex()).grid(row=34, column=10,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[143+DATAOFFSET:144+DATAOFFSET].hex()).grid(row=34, column=12,sticky=W)
 
 
-        Label(self, justify=LEFT, wraplength=800, text=data[70+DATAOFFSET:81+DATAOFFSET].hex()).grid(row=21, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[82+DATAOFFSET:93+DATAOFFSET].hex()).grid(row=22, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[94+DATAOFFSET:105+DATAOFFSET].hex()).grid(row=22, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[106+DATAOFFSET:117+DATAOFFSET].hex()).grid(row=23, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[118+DATAOFFSET:129+DATAOFFSET].hex()).grid(row=23, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[130+DATAOFFSET:131+DATAOFFSET].hex()).grid(row=24, column=2,sticky=W)
 
     def updateMisc(self,data):
-        Label(self, justify=LEFT, wraplength=800, text=data.hex()).grid(row=100, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data.hex()).grid(row=100, column=2,sticky=W)
 
 
     def clock(self):
             self.timelabel = Label(self,height=3,bg="white", text=datetime.datetime.now().strftime("%I:%M:%S%p on %B %d, %Y")).grid(row=1, column=2)                #goal is to update the clock constantly
             self.after(100,self.clock)
+
+
 
     def framcount(self):
     #will change this to represent the number of times that we have read data from the tcp port later
@@ -288,6 +282,8 @@ class DataGui(Frame):
         updatetheclock.isDaemon()
         updatetheclock.run()
 
+    def lastpacketRecieved(self,data):
+        Label(self, justify=LEFT, wraplength=800, text=data).grid(row=1, column=4,sticky=W)
 
 
 class trackTCP(threading.Thread):
@@ -308,18 +304,23 @@ class trackTCP(threading.Thread):
                 if(len(data) < 100 and len(data) > 75):
                     print("Tile data")
                     gui.updateTile(data)
+                    gui.lastpacketRecieved(now)
                     print("{}".format(data))
                 elif(len(data) < 213):
                     print("Health data")
                     gui.updateHealth(data)
+                    gui.lastpacketRecieved(now)
                     print("{}".format(data))
                 elif(len(data) > 213):
                     print("Power data")
                     gui.updatePower(data)
+                    gui.updateMisc(data)
+                    gui.lastpacketRecieved(now)
                     print("{}".format(data))
                 else:
                     print("Miscellaneous data")
                     gui.updateMisc(data)
+                    gui.lastpacketRecieved(now)
                     print("{}".format(data))
 
 
