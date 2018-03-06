@@ -17,6 +17,77 @@ test_string_tile = b'\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x00\x00\x00J\x
 
 test_string_power = b'\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\xdb\xdc\x00\x00e\xb7\x00\x00\n\xe2\x00\xc5\x00\xc5\x00\x00\x00\x00\x00\x00\x00\x03\x00\xac\x00\x00\x00\x00\x03\xa7\x02o\x02\x18\x02\x14\x01\xc9\x01\xbf\x02p\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00>\x00\n\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc4\x00\x12\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x0e\x01\x08\x01\x0c\x01\x08\x01\x0c\x01\x08\x02\x13\x02\x19\x02\x12\x02\x17\x02\x12\x02\x19\x81\xff\x82\x00\x81\xf8\x82\x00\x81\xff\x81\xf4S\xb6\xdb\xdc\xdb\xdc\xdb\xdc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0'
 
+key_order = ['BYTES_SENT',
+             'BYTES_RECIEVED',
+             '',
+             'PKTS_SENT',
+             'PKTS_RECIEVED',
+             '',
+             'INVALID_PKTS_RECIEVED',
+             'CRC_FAILS',
+             '',
+             'STATUS',
+             'EPS_PIC_RESET_FLAGS',
+             'EPS_WDT',
+             '',
+             'SA1_BOOST_V',
+             'SA1_V',
+             'SA1_I',
+             '',
+             'SA2_BOOST_V',
+             'SA2_V',
+             'SA2_I',
+             '',
+             'SA3_BOOST_V',
+             'SA3_V',
+             'SA3_I',
+             '',
+             'SA_Ym_TEMP',
+             'SA_Zp_TEMP',
+             'SA_Zm_TEMP',
+             'SA_Xp_TEMP',
+             'SA_Yp_TEMP',
+             '',
+             'VBATT_V',
+             'CHARGE_I',
+             'DISCHARGE_I',
+             'BATT1_TEMP',
+             'BATT2_TEMP',
+             '',
+             '5VBUS_V',
+             '5VBUS_I',
+             '5VBUS_TEMP',
+             '',
+             '33VBUS_V',
+             '33VBUS_I',
+             '33VBUS_TEMP',
+             '',
+             '33VEPS_V',
+             '33VEPS_I',
+             '',
+             'VBATT1_V',
+             'VBATT1_I',
+             '',
+             'VBATT2_V',
+             'VBATT2_I']
+
+
+Coeff = {}
+Coeff['LARGE_V'] =      [0,         0.01368,            'V']
+Coeff['STD_I'] =        [0,         1.611328125,        'mA']
+Coeff['STD_V'] =        [0,         0.005317,           'V']
+Coeff['AD590_TEMP'] =   [-273,      0.5462080078,       'C']
+Coeff['SA_TEMP'] =      [-273,      0.7661,             'C']
+Coeff['33EPS_I'] =      [0,         0.035413769,        'mA']
+Coeff['HIST_SA_P'] =    [0,         0.00142185467128,   'W']
+Coeff['BUS_TEMP'] =     [-238.85,   0.5776,             'C']
+Coeff['BUS_I'] =        [10,        10,                 'mA']
+Coeff['EPS_WDT'] =      [0,         0.0115833333333333, 'Hours']
+Coeff['None'] =         [0,         1,                  '']
+
+
+
+
 
 
 TCP_IP   = "153.90.121.248"
@@ -48,9 +119,41 @@ class DataGui(Frame):
         Label(self,height=3,bg="white", text="Last Recieved: ").grid(row=1, column=3,sticky=W)
 
 
-        Label(self, text="Tile data: ").grid(row=5, column=1,sticky=W)
-        Label(self,justify=LEFT,wraplength=400, text=test_string_tile.hex()).grid(row=5, column=2, sticky=W)
-        Label(self, text=" ").grid(row=7, column=2,sticky=W)
+        Label(self, text="S6 Count: ").grid(row=5, column=1,sticky=W)
+        Label(self, text="ACT_TILES: ").grid(row=5, column=3,sticky=W)
+        Label(self, text="FAULTED TILES: ").grid(row=5, column=5,sticky=W)
+        Label(self, text="FAULTED COUNT1: ").grid(row=5, column=7,sticky=W)
+        Label(self, text="FAULTED COUNT2: ").grid(row=5, column=9,sticky=W)
+
+        Label(self, text="FAULTED COUNT3: ").grid(row=6, column=1,sticky=W)
+        Label(self, text="FAULTED COUNT4: ").grid(row=6, column=3,sticky=W)
+        Label(self, text="FAULTED COUNT5: ").grid(row=6, column=5,sticky=W)
+        Label(self, text="FAULTED COUNT6: ").grid(row=6, column=7,sticky=W)
+        Label(self, text="FAULTED COUNT7: ").grid(row=6, column=9,sticky=W)
+
+        Label(self, text="FAULTED COUNT8: ").grid(row=7, column=1,sticky=W)
+        Label(self, text="FAULTS INJECTED: ").grid(row=7, column=3,sticky=W)
+        Label(self, text="TOTAL FAULTS  : ").grid(row=7, column=5,sticky=W)
+        Label(self, text="MOVE_TILE_COUNT: ").grid(row=7, column=7,sticky=W)
+        Label(self, text="NEXT_SPARE    : ").grid(row=7, column=9,sticky=W)
+
+        Label(self, text="Readback Faults: ").grid(row=8, column=1,sticky=W)
+        Label(self, text="Watchdog: ").grid(row=8, column=3,sticky=W)
+        Label(self, text="ACT PROC1: ").grid(row=8, column=5,sticky=W)
+        Label(self, text="ACT PROC2: ").grid(row=8, column=7,sticky=W)
+        Label(self, text="ACT PROC3: ").grid(row=8, column=9,sticky=W)
+
+        Label(self, text="ACTPROCCNT1: ").grid(row=9, column=1,sticky=W)
+        Label(self, text="ACTPROCCNT2: ").grid(row=9, column=3,sticky=W)
+        Label(self, text="ACTPROCCNT3: ").grid(row=9, column=5,sticky=W)
+        Label(self, text="VOTER_COUNTS: ").grid(row=9, column=7,sticky=W)
+        Label(self, text="CRC : ").grid(row=9, column=9,sticky=W)
+        Label(self, text="SYNC: ").grid(row=9, column=11,sticky=W)
+
+
+
+        self.updateTile(test_string_tile)
+
 
 
         Label(self, text="Health data: ").grid(row=10, column=1, sticky=W)
@@ -142,7 +245,7 @@ class DataGui(Frame):
         Label(self, text="HIST_BATT_I_3: ").grid(row=34, column=5, sticky=W)
         Label(self, text="HIST_BATT_I_4: ").grid(row=34, column=7, sticky=W)
         Label(self, text="HIST_BATT_I_5: ").grid(row=34, column=9, sticky=W)
-        Label(self, text="HIST_BATT_I_6: ").grid(row=33, column=11, sticky=W)
+        Label(self, text="HIST_BATT_I_6: ").grid(row=34, column=11, sticky=W)
 
         self.updatePower(test_string_health)
 
@@ -150,17 +253,50 @@ class DataGui(Frame):
 
 
     def updateTile(self,data):
-        Label(self, justify=LEFT, wraplength=400, text=data.hex()).grid(row=5, column=2,sticky=W)
+        OFFSET = 18
+        Label(self, justify=LEFT, wraplength=400, text=data[0+OFFSET:3+OFFSET].hex()).grid(row=5, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[3+OFFSET:5+OFFSET].hex()).grid(row=5, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[5+OFFSET:7+OFFSET].hex()).grid(row=5, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[7+OFFSET:9+OFFSET].hex()).grid(row=5, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[9+OFFSET:11+OFFSET].hex()).grid(row=5, column=10,sticky=W)
+
+        Label(self, justify=LEFT, wraplength=400, text=data[11+OFFSET:13+OFFSET].hex()).grid(row=6, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[13+OFFSET:15+OFFSET].hex()).grid(row=6, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[15+OFFSET:17+OFFSET].hex()).grid(row=6, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[17+OFFSET:19+OFFSET].hex()).grid(row=6, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[19+OFFSET:21+OFFSET].hex()).grid(row=6, column=10,sticky=W)
+
+        Label(self, justify=LEFT, wraplength=400, text=data[23+OFFSET:25+OFFSET].hex()).grid(row=7, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[25+OFFSET:27+OFFSET].hex()).grid(row=7, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[27+OFFSET:29+OFFSET].hex()).grid(row=7, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[29+OFFSET:31+OFFSET].hex()).grid(row=7, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[31+OFFSET:32+OFFSET].hex()).grid(row=7, column=10,sticky=W)
+
+        Label(self, justify=LEFT, wraplength=400, text=data[33+OFFSET:34+OFFSET].hex()).grid(row=8, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[34+OFFSET:35+OFFSET].hex()).grid(row=8, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[35+OFFSET:36+OFFSET].hex()).grid(row=8, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[36+OFFSET:37+OFFSET].hex()).grid(row=8, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[37+OFFSET:38+OFFSET].hex()).grid(row=8, column=10,sticky=W)
+
+        Label(self, justify=LEFT, wraplength=400, text=data[38+OFFSET:40+OFFSET].hex()).grid(row=9, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[40+OFFSET:42+OFFSET].hex()).grid(row=9, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[42+OFFSET:44+OFFSET].hex()).grid(row=9, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[44+OFFSET:46+OFFSET].hex()).grid(row=9, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[46+OFFSET:48+OFFSET].hex()).grid(row=9, column=10,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data[48+OFFSET:49+OFFSET].hex()).grid(row=9, column=12,sticky=W)
+
+
+
 
     def updateHealth(self,data):
         Label(self, justify=LEFT, wraplength=400, text=data.hex()).grid(row=10, column=2,sticky=W)
 
     def updatePower(self,data):
-        DATAOFFSET = 29
+        DATAOFFSET = 26
 
-        Label(self, justify=LEFT, wraplength=800, text=str(int(data[1+DATAOFFSET:4+DATAOFFSET].hex(),16))).grid(row=16, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=str(int(data[5+DATAOFFSET:8+DATAOFFSET].hex(),16))).grid(row=16, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[9+DATAOFFSET:10+DATAOFFSET].hex()).grid(row=17, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[0+DATAOFFSET:4+DATAOFFSET].hex(),16))).grid(row=16, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[4+DATAOFFSET:8+DATAOFFSET].hex(),16))).grid(row=16, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=data[8+DATAOFFSET:10+DATAOFFSET].hex()).grid(row=17, column=2,sticky=W)
         Label(self, justify=LEFT, wraplength=800, text=data[11+DATAOFFSET:12+DATAOFFSET].hex()).grid(row=17, column=4,sticky=W)
         Label(self, justify=LEFT, wraplength=800, text=data[13+DATAOFFSET:14+DATAOFFSET].hex()).grid(row=18, column=2,sticky=W)
         Label(self, justify=LEFT, wraplength=800, text=data[15+DATAOFFSET:16+DATAOFFSET].hex()).grid(row=18, column=4,sticky=W)
@@ -264,7 +400,6 @@ class DataGui(Frame):
     def updateMisc(self,data):
         Label(self, justify=LEFT, wraplength=400, text=data.hex()).grid(row=100, column=2,sticky=W)
 
-
     def clock(self):
             self.timelabel = Label(self,height=3,bg="white", text=datetime.datetime.now().strftime("%I:%M:%S%p on %B %d, %Y")).grid(row=1, column=2)                #goal is to update the clock constantly
             self.after(100,self.clock)
@@ -316,7 +451,7 @@ class trackTCP(threading.Thread):
                     gui.updatePower(data)
                     gui.updateMisc(data)
                     gui.lastpacketRecieved(now)
-                    print("{}".format(data))
+                    print("{}".format(data.hex()))
                 else:
                     print("Miscellaneous data")
                     gui.updateMisc(data)
