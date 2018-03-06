@@ -154,10 +154,10 @@ class DataGui(Frame):
 
         self.updateTile(test_string_tile)
 
+        Frame(height=2, bg="black").grid(row=10,column=1,stick="nwes")
 
-
-        Label(self, text="Health data: ").grid(row=10, column=1, sticky=W)
-        Label(self, justify=LEFT, wraplength=400, text=test_string_health.hex()).grid(row=10, column=2,sticky=W)
+        Label(self, text="Health data: ").grid(row=11, column=1, sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=test_string_health.hex()).grid(row=11, column=2,sticky=W)
         Label(self, text=" ").grid(row=12, column=2,sticky=W)
 
 
@@ -289,7 +289,7 @@ class DataGui(Frame):
 
 
     def updateHealth(self,data):
-        Label(self, justify=LEFT, wraplength=400, text=data.hex()).grid(row=10, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=400, text=data.hex()).grid(row=11, column=2,sticky=W)
 
     def updatePower(self,data):
         DATAOFFSET = 26
