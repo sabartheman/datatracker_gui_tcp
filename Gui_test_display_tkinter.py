@@ -293,110 +293,110 @@ class DataGui(Frame):
         Label(self, justify=LEFT, wraplength=400, text=data.hex()).grid(row=11, column=2,sticky=W)
 
     def updatePower(self,data):
-        DATAOFFSET = 26
+        DATAOFFSET = 32
         POWERROWOFFSET = 10
 
         #Initial set of data from EPS
         Label(self, justify=LEFT, wraplength=800, text=str(int(data[0+DATAOFFSET:4+DATAOFFSET].hex(),16))).grid(row=16+POWERROWOFFSET, column=2,sticky=W)
         Label(self, justify=LEFT, wraplength=800, text=str(int(data[4+DATAOFFSET:8+DATAOFFSET].hex(),16))).grid(row=16+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[8+DATAOFFSET:10+DATAOFFSET].hex()).grid(row=17+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[10+DATAOFFSET:12+DATAOFFSET].hex()).grid(row=17+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[12+DATAOFFSET:14+DATAOFFSET].hex()).grid(row=18+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[14+DATAOFFSET:16+DATAOFFSET].hex()).grid(row=18+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[16+DATAOFFSET:18+DATAOFFSET].hex()).grid(row=19+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[18+DATAOFFSET:20+DATAOFFSET].hex()).grid(row=19+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[20+DATAOFFSET:22+DATAOFFSET].hex()).grid(row=20+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[8+DATAOFFSET:10+DATAOFFSET].hex(),16))).grid(row=17+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[10+DATAOFFSET:12+DATAOFFSET].hex(),16))).grid(row=17+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[12+DATAOFFSET:14+DATAOFFSET].hex(),16))).grid(row=18+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[14+DATAOFFSET:16+DATAOFFSET].hex(),16))).grid(row=18+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[16+DATAOFFSET:18+DATAOFFSET].hex(),16))).grid(row=19+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[18+DATAOFFSET:20+DATAOFFSET].hex(),16))).grid(row=19+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[20+DATAOFFSET:22+DATAOFFSET].hex(),16))).grid(row=20+POWERROWOFFSET, column=2,sticky=W)
 
         #SA1 SA2 SA3
-        Label(self, justify=LEFT, wraplength=800, text=data[22+DATAOFFSET:24+DATAOFFSET].hex()).grid(row=20+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[24+DATAOFFSET:26+DATAOFFSET].hex()).grid(row=20+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[26+DATAOFFSET:28+DATAOFFSET].hex()).grid(row=21+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[28+DATAOFFSET:30+DATAOFFSET].hex()).grid(row=21+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[30+DATAOFFSET:32+DATAOFFSET].hex()).grid(row=22+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[32+DATAOFFSET:34+DATAOFFSET].hex()).grid(row=22+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[22+DATAOFFSET:24+DATAOFFSET].hex(),16))).grid(row=20+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[24+DATAOFFSET:26+DATAOFFSET].hex(),16))).grid(row=20+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[26+DATAOFFSET:28+DATAOFFSET].hex(),16))).grid(row=21+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[28+DATAOFFSET:30+DATAOFFSET].hex(),16))).grid(row=21+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[30+DATAOFFSET:32+DATAOFFSET].hex(),16))).grid(row=22+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[32+DATAOFFSET:34+DATAOFFSET].hex(),16))).grid(row=22+POWERROWOFFSET, column=4,sticky=W)
 
         #BATT TEMPS
-        Label(self, justify=LEFT, wraplength=800, text=data[34+DATAOFFSET:36+DATAOFFSET].hex()).grid(row=23+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[36+DATAOFFSET:38+DATAOFFSET].hex()).grid(row=23+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[34+DATAOFFSET:36+DATAOFFSET].hex(),16))).grid(row=23+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[36+DATAOFFSET:38+DATAOFFSET].hex(),16))).grid(row=23+POWERROWOFFSET, column=4,sticky=W)
 
         #BUS VOLTAGE
-        Label(self, justify=LEFT, wraplength=800, text=data[38+DATAOFFSET:40+DATAOFFSET].hex()).grid(row=23+POWERROWOFFSET, column=6,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[40+DATAOFFSET:42+DATAOFFSET].hex()).grid(row=23+POWERROWOFFSET, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[38+DATAOFFSET:40+DATAOFFSET].hex(),16))).grid(row=23+POWERROWOFFSET, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[40+DATAOFFSET:42+DATAOFFSET].hex(),16))).grid(row=23+POWERROWOFFSET, column=8,sticky=W)
 
         #BATTERY VOLTAGE
-        Label(self, justify=LEFT, wraplength=800, text=data[42+DATAOFFSET:44+DATAOFFSET].hex()).grid(row=24+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[44+DATAOFFSET:46+DATAOFFSET].hex()).grid(row=24+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[46+DATAOFFSET:48+DATAOFFSET].hex()).grid(row=24+POWERROWOFFSET, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[42+DATAOFFSET:44+DATAOFFSET].hex(),16))).grid(row=24+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[44+DATAOFFSET:46+DATAOFFSET].hex(),16))).grid(row=24+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[46+DATAOFFSET:48+DATAOFFSET].hex(),16))).grid(row=24+POWERROWOFFSET, column=6,sticky=W)
 
         #BUS TEMPS
-        Label(self, justify=LEFT, wraplength=800, text=data[48+DATAOFFSET:50+DATAOFFSET].hex()).grid(row=25+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[50+DATAOFFSET:52+DATAOFFSET].hex()).grid(row=25+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+DATAOFFSET:50+DATAOFFSET].hex(),16))).grid(row=25+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[50+DATAOFFSET:52+DATAOFFSET].hex(),16))).grid(row=25+POWERROWOFFSET, column=4,sticky=W)
 
         #3V3EPS
-        Label(self, justify=LEFT, wraplength=800, text=data[52+DATAOFFSET:54+DATAOFFSET].hex()).grid(row=25+POWERROWOFFSET, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[52+DATAOFFSET:54+DATAOFFSET].hex(),16))).grid(row=25+POWERROWOFFSET, column=6,sticky=W)
 
         #SAx_I
-        Label(self, justify=LEFT, wraplength=800, text=data[54+DATAOFFSET:56+DATAOFFSET].hex()).grid(row=26+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[56+DATAOFFSET:58+DATAOFFSET].hex()).grid(row=26+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[58+DATAOFFSET:60+DATAOFFSET].hex()).grid(row=26+POWERROWOFFSET, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[54+DATAOFFSET:56+DATAOFFSET].hex(),16))).grid(row=26+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[56+DATAOFFSET:58+DATAOFFSET].hex(),16))).grid(row=26+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[58+DATAOFFSET:60+DATAOFFSET].hex(),16))).grid(row=26+POWERROWOFFSET, column=6,sticky=W)
 
         #CURRENT STATS
-        Label(self, justify=LEFT, wraplength=800, text=data[60+DATAOFFSET:62+DATAOFFSET].hex()).grid(row=27+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[62+DATAOFFSET:64+DATAOFFSET].hex()).grid(row=27+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[64+DATAOFFSET:66+DATAOFFSET].hex()).grid(row=27+POWERROWOFFSET, column=6,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[66+DATAOFFSET:68+DATAOFFSET].hex()).grid(row=27+POWERROWOFFSET, column=8,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[68+DATAOFFSET:70+DATAOFFSET].hex()).grid(row=27+POWERROWOFFSET, column=10,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[60+DATAOFFSET:62+DATAOFFSET].hex(),16))).grid(row=27+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[62+DATAOFFSET:64+DATAOFFSET].hex(),16))).grid(row=27+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[64+DATAOFFSET:66+DATAOFFSET].hex(),16))).grid(row=27+POWERROWOFFSET, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[66+DATAOFFSET:68+DATAOFFSET].hex(),16))).grid(row=27+POWERROWOFFSET, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[68+DATAOFFSET:70+DATAOFFSET].hex(),16))).grid(row=27+POWERROWOFFSET, column=10,sticky=W)
 
         #SA TEMPS
-        Label(self, justify=LEFT, wraplength=800, text=data[70+DATAOFFSET:72+DATAOFFSET].hex()).grid(row=28+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[72+DATAOFFSET:74+DATAOFFSET].hex()).grid(row=28+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[74+DATAOFFSET:76+DATAOFFSET].hex()).grid(row=28+POWERROWOFFSET, column=6,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[76+DATAOFFSET:78+DATAOFFSET].hex()).grid(row=28+POWERROWOFFSET, column=8,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[78+DATAOFFSET:80+DATAOFFSET].hex()).grid(row=28+POWERROWOFFSET, column=10,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[70+DATAOFFSET:72+DATAOFFSET].hex(),16))).grid(row=28+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[72+DATAOFFSET:74+DATAOFFSET].hex(),16))).grid(row=28+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[74+DATAOFFSET:76+DATAOFFSET].hex(),16))).grid(row=28+POWERROWOFFSET, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[76+DATAOFFSET:78+DATAOFFSET].hex(),16))).grid(row=28+POWERROWOFFSET, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[78+DATAOFFSET:80+DATAOFFSET].hex(),16))).grid(row=28+POWERROWOFFSET, column=10,sticky=W)
 
         #3V3EPS_I
-        Label(self, justify=LEFT, wraplength=800, text=data[80+DATAOFFSET:82+DATAOFFSET].hex()).grid(row=29+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[82+DATAOFFSET:84+DATAOFFSET].hex()).grid(row=29+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[80+DATAOFFSET:82+DATAOFFSET].hex(),16))).grid(row=29+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[82+DATAOFFSET:84+DATAOFFSET].hex(),16))).grid(row=29+POWERROWOFFSET, column=4,sticky=W)
 
         #HIST_SA_1
-        Label(self, justify=LEFT, wraplength=800, text=data[84+DATAOFFSET:86+DATAOFFSET].hex()).grid(row=30+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[86+DATAOFFSET:88+DATAOFFSET].hex()).grid(row=30+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[88+DATAOFFSET:90+DATAOFFSET].hex()).grid(row=30+POWERROWOFFSET, column=6,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[90+DATAOFFSET:92+DATAOFFSET].hex()).grid(row=30+POWERROWOFFSET, column=8,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[92+DATAOFFSET:94+DATAOFFSET].hex()).grid(row=30+POWERROWOFFSET, column=10,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[94+DATAOFFSET:96+DATAOFFSET].hex()).grid(row=30+POWERROWOFFSET, column=12,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[84+DATAOFFSET:86+DATAOFFSET].hex(),16))).grid(row=30+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[86+DATAOFFSET:88+DATAOFFSET].hex(),16))).grid(row=30+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[88+DATAOFFSET:90+DATAOFFSET].hex(),16))).grid(row=30+POWERROWOFFSET, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[90+DATAOFFSET:92+DATAOFFSET].hex(),16))).grid(row=30+POWERROWOFFSET, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[92+DATAOFFSET:94+DATAOFFSET].hex(),16))).grid(row=30+POWERROWOFFSET, column=10,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[94+DATAOFFSET:96+DATAOFFSET].hex(),16))).grid(row=30+POWERROWOFFSET, column=12,sticky=W)
 
         #HIST_SA_2
-        Label(self, justify=LEFT, wraplength=800, text=data[96+DATAOFFSET:98+DATAOFFSET].hex()).grid(row=31+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[98+DATAOFFSET:100+DATAOFFSET].hex()).grid(row=31+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[100+DATAOFFSET:102+DATAOFFSET].hex()).grid(row=31+POWERROWOFFSET, column=6,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[102+DATAOFFSET:104+DATAOFFSET].hex()).grid(row=31+POWERROWOFFSET, column=8,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[104+DATAOFFSET:106+DATAOFFSET].hex()).grid(row=31+POWERROWOFFSET, column=10,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[106+DATAOFFSET:108+DATAOFFSET].hex()).grid(row=31+POWERROWOFFSET, column=12,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[96+DATAOFFSET:98+DATAOFFSET].hex(),16))).grid(row=31+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[98+DATAOFFSET:100+DATAOFFSET].hex(),16))).grid(row=31+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[100+DATAOFFSET:102+DATAOFFSET].hex(),16))).grid(row=31+POWERROWOFFSET, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[102+DATAOFFSET:104+DATAOFFSET].hex(),16))).grid(row=31+POWERROWOFFSET, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[104+DATAOFFSET:106+DATAOFFSET].hex(),16))).grid(row=31+POWERROWOFFSET, column=10,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[106+DATAOFFSET:108+DATAOFFSET].hex(),16))).grid(row=31+POWERROWOFFSET, column=12,sticky=W)
 
         #HIST_SA_3
-        Label(self, justify=LEFT, wraplength=800, text=data[108+DATAOFFSET:110+DATAOFFSET].hex()).grid(row=32+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[110+DATAOFFSET:112+DATAOFFSET].hex()).grid(row=32+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[112+DATAOFFSET:114+DATAOFFSET].hex()).grid(row=32+POWERROWOFFSET, column=6,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[114+DATAOFFSET:116+DATAOFFSET].hex()).grid(row=32+POWERROWOFFSET, column=8,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[116+DATAOFFSET:118+DATAOFFSET].hex()).grid(row=32+POWERROWOFFSET, column=10,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[118+DATAOFFSET:120+DATAOFFSET].hex()).grid(row=32+POWERROWOFFSET, column=12,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[108+DATAOFFSET:110+DATAOFFSET].hex(),16))).grid(row=32+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[110+DATAOFFSET:112+DATAOFFSET].hex(),16))).grid(row=32+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[112+DATAOFFSET:114+DATAOFFSET].hex(),16))).grid(row=32+POWERROWOFFSET, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[114+DATAOFFSET:116+DATAOFFSET].hex(),16))).grid(row=32+POWERROWOFFSET, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[116+DATAOFFSET:118+DATAOFFSET].hex(),16))).grid(row=32+POWERROWOFFSET, column=10,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[118+DATAOFFSET:120+DATAOFFSET].hex(),16))).grid(row=32+POWERROWOFFSET, column=12,sticky=W)
 
         #HIST_BATT_V
-        Label(self, justify=LEFT, wraplength=800, text=data[120+DATAOFFSET:122+DATAOFFSET].hex()).grid(row=33+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[122+DATAOFFSET:124+DATAOFFSET].hex()).grid(row=33+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[124+DATAOFFSET:126+DATAOFFSET].hex()).grid(row=33+POWERROWOFFSET, column=6,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[126+DATAOFFSET:128+DATAOFFSET].hex()).grid(row=33+POWERROWOFFSET, column=8,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[128+DATAOFFSET:130+DATAOFFSET].hex()).grid(row=33+POWERROWOFFSET, column=10,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[130+DATAOFFSET:132+DATAOFFSET].hex()).grid(row=33+POWERROWOFFSET, column=12,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[120+DATAOFFSET:122+DATAOFFSET].hex(),16))).grid(row=33+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[122+DATAOFFSET:124+DATAOFFSET].hex(),16))).grid(row=33+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[124+DATAOFFSET:126+DATAOFFSET].hex(),16))).grid(row=33+POWERROWOFFSET, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[126+DATAOFFSET:128+DATAOFFSET].hex(),16))).grid(row=33+POWERROWOFFSET, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[128+DATAOFFSET:130+DATAOFFSET].hex(),16))).grid(row=33+POWERROWOFFSET, column=10,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[130+DATAOFFSET:132+DATAOFFSET].hex(),16))).grid(row=33+POWERROWOFFSET, column=12,sticky=W)
 
         #HIST_BATT_I
-        Label(self, justify=LEFT, wraplength=800, text=data[132+DATAOFFSET:134+DATAOFFSET].hex()).grid(row=34+POWERROWOFFSET, column=2,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[134+DATAOFFSET:136+DATAOFFSET].hex()).grid(row=34+POWERROWOFFSET, column=4,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[136+DATAOFFSET:138+DATAOFFSET].hex()).grid(row=34+POWERROWOFFSET, column=6,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[138+DATAOFFSET:140+DATAOFFSET].hex()).grid(row=34+POWERROWOFFSET, column=8,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[140+DATAOFFSET:142+DATAOFFSET].hex()).grid(row=34+POWERROWOFFSET, column=10,sticky=W)
-        Label(self, justify=LEFT, wraplength=800, text=data[142+DATAOFFSET:144+DATAOFFSET].hex()).grid(row=34+POWERROWOFFSET, column=12,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[132+DATAOFFSET:134+DATAOFFSET].hex(),16))).grid(row=34+POWERROWOFFSET, column=2,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[134+DATAOFFSET:136+DATAOFFSET].hex(),16))).grid(row=34+POWERROWOFFSET, column=4,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[136+DATAOFFSET:138+DATAOFFSET].hex(),16))).grid(row=34+POWERROWOFFSET, column=6,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[138+DATAOFFSET:140+DATAOFFSET].hex(),16))).grid(row=34+POWERROWOFFSET, column=8,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[140+DATAOFFSET:142+DATAOFFSET].hex(),16))).grid(row=34+POWERROWOFFSET, column=10,sticky=W)
+        Label(self, justify=LEFT, wraplength=800, text=str(int(data[142+DATAOFFSET:144+DATAOFFSET].hex(),16))).grid(row=34+POWERROWOFFSET, column=12,sticky=W)
 
 
 
