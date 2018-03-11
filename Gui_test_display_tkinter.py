@@ -293,7 +293,7 @@ class DataGui(Frame):
         Label(self, justify=LEFT, wraplength=400, text=data.hex()).grid(row=11, column=2,sticky=W)
 
     def updatePower(self,data):
-        DATAOFFSET = 32
+        DATAOFFSET = 14
         POWERROWOFFSET = 10
 
         #Initial set of data from EPS
@@ -405,7 +405,7 @@ class DataGui(Frame):
 
     def clock(self):
             self.timelabel = Label(self,height=3,bg="white", text=datetime.datetime.now().strftime("%I:%M:%S%p on %B %d, %Y")).grid(row=1, column=2)                #goal is to update the clock constantly
-            self.after(100,self.clock)
+            self.after(500,self.clock)
 
 
 
