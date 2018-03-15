@@ -471,215 +471,209 @@ class DataGui(Frame):
 
 	def updateTile(self,data):
 		OFFSET = 18
-		self.S6_COUNT["text"] = "S6 Count: " + data[0+OFFSET:3+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[0+OFFSET:3+OFFSET].hex()).grid(row=5, column=2,sticky=W)
-		self.ACT_TILES["text"] = "ACT TILES: " + data[3+OFFSET:5+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[3+OFFSET:5+OFFSET].hex()).grid(row=5, column=4,sticky=W)
-		self.FAULTED_TILES["text"] = "FAULTED TILES: " + data[5+OFFSET:7+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[5+OFFSET:7+OFFSET].hex()).grid(row=5, column=6,sticky=W)
-		self.FAULTED_COUNT1["text"] = "FAULTED COUNT 1: " + data[7+OFFSET:9+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[7+OFFSET:9+OFFSET].hex()).grid(row=5, column=8,sticky=W)
-		self.FAULTED_COUNT2["text"] = "FAULTED COUNT 2: " + data[9+OFFSET:11+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[9+OFFSET:11+OFFSET].hex()).grid(row=5, column=10,sticky=W)
+		self.S6_COUNT["text"] = "S6 Count: " + data[0+OFFSET:3+OFFSET].hex()
+		self.ACT_TILES["text"] = "ACT TILES: " + data[3+OFFSET:5+OFFSET].hex()
+		self.FAULTED_TILES["text"] = "FAULTED TILES: " + data[5+OFFSET:7+OFFSET].hex()
+		self.FAULTED_COUNT1["text"] = "FAULTED COUNT 1: " + data[7+OFFSET:9+OFFSET].hex()
+		self.FAULTED_COUNT2["text"] = "FAULTED COUNT 2: " + data[9+OFFSET:11+OFFSET].hex()
 
-		self.FAULTED_COUNT3["text"] = "FAULTED COUNT 3: " + data[11+OFFSET:13+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[11+OFFSET:13+OFFSET].hex()).grid(row=6, column=2,sticky=W)
-		self.FAULTED_COUNT4["text"] = "FAULTED COUNT 4: " + data[13+OFFSET:15+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[13+OFFSET:15+OFFSET].hex()).grid(row=6, column=4,sticky=W)
-		self.FAULTED_COUNT5["text"] = "FAULTED COUNT 5: " + data[15+OFFSET:17+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[15+OFFSET:17+OFFSET].hex()).grid(row=6, column=6,sticky=W)
-		self.FAULTED_COUNT6["text"] = "FAULTED COUNT 6: " + data[17+OFFSET:19+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[17+OFFSET:19+OFFSET].hex()).grid(row=6, column=8,sticky=W)
-		self.FAULTED_COUNT7["text"] = "FAULTED COUNT 7: " + data[19+OFFSET:21+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[19+OFFSET:21+OFFSET].hex()).grid(row=6, column=10,sticky=W)
-		self.FAULTED_COUNT8["text"] = "FAULTED COUNT 8: " + data[23+OFFSET:25+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[23+OFFSET:25+OFFSET].hex()).grid(row=7, column=2,sticky=W)
-		self.FAULTS_INJECTED["text"] = "FAULTS INJECTED: " + data[25+OFFSET:27+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[25+OFFSET:27+OFFSET].hex()).grid(row=7, column=4,sticky=W)
-		self.TOTAL_FAULTS["text"] = "TOTAL FAULTS: " + data[27+OFFSET:29+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[27+OFFSET:29+OFFSET].hex()).grid(row=7, column=6,sticky=W)
-		self.MOVE_TILE_COUNT["text"] = "MOVE TILE COUNT: " + data[29+OFFSET:31+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[29+OFFSET:31+OFFSET].hex()).grid(row=7, column=8,sticky=W)
-		self.NEXT_SPARE["text"] = "NEXT SPARE: " + data[31+OFFSET:32+OFFSET].hex()#= Label(self, justify=LEFT, wraplength=400, text=data[31+OFFSET:32+OFFSET].hex()).grid(row=7, column=10,sticky=W)
-		self.READBACK_FAULTS["text"] = "Readback Faults: " + data[33+OFFSET:34+OFFSET].hex()#= Label(self, justify=LEFT, wraplength=400, text=data[33+OFFSET:34+OFFSET].hex()).grid(row=8, column=2,sticky=W)
-		self.WATCHDOG["text"] = "Watchdog: " +data[34+OFFSET:35+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[34+OFFSET:35+OFFSET].hex()).grid(row=8, column=4,sticky=W)
-		self.ACT_PROC1["text"] = "ACT PROC1: " + data[35+OFFSET:36+OFFSET].hex()# = Label(self, justify=LEFT, wraplength=400, text=data[35+OFFSET:36+OFFSET].hex()).grid(row=8, column=6,sticky=W)
-		self.ACT_PROC2["text"] = "ACT PROC2: " + data[36+OFFSET:37+OFFSET].hex()#= Label(self, justify=LEFT, wraplength=400, text=data[36+OFFSET:37+OFFSET].hex()).grid(row=8, column=8,sticky=W)
-		self.ACT_PROC3["text"] = "ACT PROC3: " + data[37+OFFSET:38+OFFSET].hex()#= Label(self, justify=LEFT, wraplength=400, text=data[37+OFFSET:38+OFFSET].hex()).grid(row=8, column=10,sticky=W)
-		self.ACTPROCCNT1["text"] = "ACTPROCCNT1" + data[38+OFFSET:40+OFFSET].hex()#= Label(self, justify=LEFT, wraplength=400, text=data[38+OFFSET:40+OFFSET].hex()).grid(row=9, column=2,sticky=W)
-		self.ACTPROCCNT2["text"] = "ACTPROCCNT2" + data[40+OFFSET:42+OFFSET].hex()#= Label(self, justify=LEFT, wraplength=400, text=data[40+OFFSET:42+OFFSET].hex()).grid(row=9, column=4,sticky=W)
-		self.ACTPROCCNT3["text"] = "ACTPROCCNT3" + data[42+OFFSET:44+OFFSET].hex()#= Label(self, justify=LEFT, wraplength=400, text=data[42+OFFSET:44+OFFSET].hex()).grid(row=9, column=6,sticky=W)
-		self.VOTER_COUNTS["text"] = "VOTER COUNTS: " + data[44+OFFSET:46+OFFSET].hex()#= Label(self, justify=LEFT, wraplength=400, text=data[44+OFFSET:46+OFFSET].hex()).grid(row=9, column=8,sticky=W)
-		self.CRC_TILE["text"] = "CRC: " + data[46+OFFSET:48+OFFSET].hex()#= Label(self, justify=LEFT, wraplength=400, text=data[46+OFFSET:48+OFFSET].hex()).grid(row=9, column=10,sticky=W)
-		self.SYNC["text"] = "SYNC: " + data[48+OFFSET:49+OFFSET].hex()#= Label(self, justify=LEFT, wraplength=400, text=data[48+OFFSET:49+OFFSET].hex()).grid(row=9, column=12,sticky=W)
+		self.FAULTED_COUNT3["text"] = "FAULTED COUNT 3: " + data[11+OFFSET:13+OFFSET].hex()
+		self.FAULTED_COUNT4["text"] = "FAULTED COUNT 4: " + data[13+OFFSET:15+OFFSET].hex()
+		self.FAULTED_COUNT5["text"] = "FAULTED COUNT 5: " + data[15+OFFSET:17+OFFSET].hex()
+		self.FAULTED_COUNT6["text"] = "FAULTED COUNT 6: " + data[17+OFFSET:19+OFFSET].hex()
+		self.FAULTED_COUNT7["text"] = "FAULTED COUNT 7: " + data[19+OFFSET:21+OFFSET].hex()
+		self.FAULTED_COUNT8["text"] = "FAULTED COUNT 8: " + data[23+OFFSET:25+OFFSET].hex()
+		self.FAULTS_INJECTED["text"] = "FAULTS INJECTED: " + data[25+OFFSET:27+OFFSET].hex()
+		self.TOTAL_FAULTS["text"] = "TOTAL FAULTS: " + data[27+OFFSET:29+OFFSET].hex()
+		self.MOVE_TILE_COUNT["text"] = "MOVE TILE COUNT: " + data[29+OFFSET:31+OFFSET].hex()
+		self.NEXT_SPARE["text"] = "NEXT SPARE: " + data[31+OFFSET:32+OFFSET].hex()
+		self.READBACK_FAULTS["text"] = "Readback Faults: " + data[33+OFFSET:34+OFFSET].hex()
+		self.WATCHDOG["text"] = "Watchdog: " +data[34+OFFSET:35+OFFSET].hex()
+		self.ACT_PROC1["text"] = "ACT PROC1: " + data[35+OFFSET:36+OFFSET].hex()
+		self.ACT_PROC2["text"] = "ACT PROC2: " + data[36+OFFSET:37+OFFSET].hex()
+		self.ACT_PROC3["text"] = "ACT PROC3: " + data[37+OFFSET:38+OFFSET].hex()
+		self.ACTPROCCNT1["text"] = "ACTPROCCNT1" + data[38+OFFSET:40+OFFSET].hex()
+		self.ACTPROCCNT2["text"] = "ACTPROCCNT2" + data[40+OFFSET:42+OFFSET].hex()
+		self.ACTPROCCNT3["text"] = "ACTPROCCNT3" + data[42+OFFSET:44+OFFSET].hex()
+		self.VOTER_COUNTS["text"] = "VOTER COUNTS: " + data[44+OFFSET:46+OFFSET].hex()
+		self.CRC_TILE["text"] = "CRC: " + data[46+OFFSET:48+OFFSET].hex()
+		self.SYNC["text"] = "SYNC: " + data[48+OFFSET:49+OFFSET].hex()
 
 
 
 
 	def updateHealth(self,data):
 		OFFSET = 15
-		#self. = Label(self, justify=LEFT, wraplength=400, text=data.hex()).grid(row=11, column=2, sticky=W)
-		# i = 0
-		# for i in range(20):
-		# 	print("DATA AT " + str(i) + ": " + format(data[i], "2X"))
-		# 	self. = Label(self, justify=LEFT,wraplength=400, text=format(data[i], "2X")).grid(row=11, column=3+i, sticky=W)
 
-		#self. = Label(self, justify=LEFT, wraplength=800, text=str(data[OFFSET+1])).grid(row=12, column=2, sticky=W)
 		### VOLTAGES ###
-		self.VOLTAGE_INS_IN["text"]     = "VOLTAGE_INS_IN: " + str(int(data[2+OFFSET:4+OFFSET].hex(),16)  /1000)+" V" #Label(self, justify=LEFT, wraplength=800, text=str(int(data[2+OFFSET:4+OFFSET].hex(),16)  /1000)+" V").grid(row=13, column=2,sticky=W)
-		self.VOLTAGE_AVE_IN["text"]     = "VOLTAGE_INS_IN: " + str(int(data[4+OFFSET:6+OFFSET].hex(),16)  /1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[4+OFFSET:6+OFFSET].hex(),16)  /1000)+" V").grid(row=14, column=2,sticky=W)
-		self.VOLTAGE_MAX_IN["text"]     = "VOLTAGE_INS_IN: " + str(int(data[6+OFFSET:8+OFFSET].hex(),16)  /1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[6+OFFSET:8+OFFSET].hex(),16)  /1000)+" V").grid(row=15, column=2,sticky=W)
-		self.VOLTAGE_MIN_IN["text"]     = "VOLTAGE_INS_IN: " + str(int(data[8+OFFSET:10+OFFSET].hex(),16) /1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[8+OFFSET:10+OFFSET].hex(),16) /1000)+" V").grid(row=16, column=2,sticky=W)
-		self.VOLTAGE_INS_3V3D["text"]   = "VOLTAGE_INS_3V3D: " + str(int(data[10+OFFSET:12+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[10+OFFSET:12+OFFSET].hex(),16)/1000)+" V").grid(row=17, column=2,sticky=W)
-		self.VOLTAGE_AVE_3V3D["text"]   = "VOLTAGE_INS_3V3D: " + str(int(data[12+OFFSET:14+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[12+OFFSET:14+OFFSET].hex(),16)/1000)+" V").grid(row=18, column=2,sticky=W)
-		self.VOLTAGE_MAX_3V3D["text"]   = "VOLTAGE_INS_3V3D: " + str(int(data[14+OFFSET:16+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[14+OFFSET:16+OFFSET].hex(),16)/1000)+" V").grid(row=19, column=2,sticky=W)
-		self.VOLTAGE_MIN_3V3D["text"]   = "VOLTAGE_INS_3V3D: " + str(int(data[16+OFFSET:18+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[16+OFFSET:18+OFFSET].hex(),16)/1000)+" V").grid(row=20, column=2,sticky=W)
-		self.VOLTAGE_INS_2V5D["text"]   = "VOLTAGE_INS_2V5D: " + str(int(data[18+OFFSET:20+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[18+OFFSET:20+OFFSET].hex(),16)/1000)+" V").grid(row=13, column=4,sticky=W)
-		self.VOLTAGE_AVE_2V5D["text"]   = "VOLTAGE_INS_2V5D: " + str(int(data[20+OFFSET:22+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[20+OFFSET:22+OFFSET].hex(),16)/1000)+" V").grid(row=14, column=4,sticky=W)
-		self.VOLTAGE_MAX_2V5D["text"]   = "VOLTAGE_INS_2V5D: " + str(int(data[22+OFFSET:24+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[22+OFFSET:24+OFFSET].hex(),16)/1000)+" V").grid(row=15, column=4,sticky=W)
-		self.VOLTAGE_MIN_2V5D["text"]   = "VOLTAGE_INS_2V5D: " + str(int(data[24+OFFSET:26+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[24+OFFSET:26+OFFSET].hex(),16)/1000)+" V").grid(row=16, column=4,sticky=W)
-		self.VOLTAGE_INS_1V8D["text"]   = "VOLTAGE_INS_1V8D: " + str(int(data[26+OFFSET:28+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[26+OFFSET:28+OFFSET].hex(),16)/1000)+" V").grid(row=17, column=4,sticky=W)
-		self.VOLTAGE_AVE_1V8D["text"]   = "VOLTAGE_INS_1V8D: " + str(int(data[28+OFFSET:30+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[28+OFFSET:30+OFFSET].hex(),16)/1000)+" V").grid(row=18, column=4,sticky=W)
-		self.VOLTAGE_MAX_1V8D["text"]   = "VOLTAGE_INS_1V8D: " + str(int(data[30+OFFSET:32+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[30+OFFSET:32+OFFSET].hex(),16)/1000)+" V").grid(row=19, column=4,sticky=W)
-		self.VOLTAGE_MIN_1V8D["text"]   = "VOLTAGE_INS_1V8D: " + str(int(data[32+OFFSET:34+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[32+OFFSET:34+OFFSET].hex(),16)/1000)+" V").grid(row=20, column=4,sticky=W)
-		self.VOLTAGE_INS_1V0SD["text"]  = "VOLTAGE_INS_1V0SD: " + str(int(data[34+OFFSET:36+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[34+OFFSET:36+OFFSET].hex(),16)/1000)+" V").grid(row=13, column=6,sticky=W)
-		self.VOLTAGE_AVE_1V0SD["text"]  = "VOLTAGE_INS_1V0SD: " + str(int(data[36+OFFSET:38+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[36+OFFSET:38+OFFSET].hex(),16)/1000)+" V").grid(row=14, column=6,sticky=W)
-		self.VOLTAGE_MAX_1V0SD["text"]  = "VOLTAGE_INS_1V0SD: " + str(int(data[38+OFFSET:40+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[38+OFFSET:40+OFFSET].hex(),16)/1000)+" V").grid(row=15, column=6,sticky=W)
-		self.VOLTAGE_MIN_1V0SD["text"]  = "VOLTAGE_INS_1V0SD: " + str(int(data[40+OFFSET:42+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[40+OFFSET:42+OFFSET].hex(),16)/1000)+" V").grid(row=16, column=6,sticky=W)
-		self.VOLTAGE_INS_0V95AD["text"] = "VOLTAGE_INS_0V95AD: " + str(int(data[42+OFFSET:44+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[42+OFFSET:44+OFFSET].hex(),16)/1000)+" V").grid(row=17, column=6,sticky=W)
-		self.VOLTAGE_AVE_0V95AD["text"] = "VOLTAGE_INS_0V95AD: " + str(int(data[44+OFFSET:46+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[44+OFFSET:46+OFFSET].hex(),16)/1000)+" V").grid(row=18, column=6,sticky=W)
-		self.VOLTAGE_MAX_0V95AD["text"] = "VOLTAGE_INS_0V95AD: " + str(int(data[46+OFFSET:48+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[46+OFFSET:48+OFFSET].hex(),16)/1000)+" V").grid(row=19, column=6,sticky=W)
-		self.VOLTAGE_MIN_0V95AD["text"] = "VOLTAGE_INS_0V95AD: " + str(int(data[48+OFFSET:50+OFFSET].hex(),16)/1000)+" V"#Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+OFFSET:50+OFFSET].hex(),16)/1000)+" V").grid(row=20, column=6,sticky=W)
+		self.VOLTAGE_INS_IN["text"]     = "VOLTAGE_INS_IN: " + str(int(data[2+OFFSET:4+OFFSET].hex(),16)  /1000)+" V"
+		self.VOLTAGE_AVE_IN["text"]     = "VOLTAGE_INS_IN: " + str(int(data[4+OFFSET:6+OFFSET].hex(),16)  /1000)+" V"
+		self.VOLTAGE_MAX_IN["text"]     = "VOLTAGE_INS_IN: " + str(int(data[6+OFFSET:8+OFFSET].hex(),16)  /1000)+" V"
+		self.VOLTAGE_MIN_IN["text"]     = "VOLTAGE_INS_IN: " + str(int(data[8+OFFSET:10+OFFSET].hex(),16) /1000)+" V"
+		self.VOLTAGE_INS_3V3D["text"]   = "VOLTAGE_INS_3V3D: " + str(int(data[10+OFFSET:12+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_AVE_3V3D["text"]   = "VOLTAGE_INS_3V3D: " + str(int(data[12+OFFSET:14+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_MAX_3V3D["text"]   = "VOLTAGE_INS_3V3D: " + str(int(data[14+OFFSET:16+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_MIN_3V3D["text"]   = "VOLTAGE_INS_3V3D: " + str(int(data[16+OFFSET:18+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_INS_2V5D["text"]   = "VOLTAGE_INS_2V5D: " + str(int(data[18+OFFSET:20+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_AVE_2V5D["text"]   = "VOLTAGE_INS_2V5D: " + str(int(data[20+OFFSET:22+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_MAX_2V5D["text"]   = "VOLTAGE_INS_2V5D: " + str(int(data[22+OFFSET:24+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_MIN_2V5D["text"]   = "VOLTAGE_INS_2V5D: " + str(int(data[24+OFFSET:26+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_INS_1V8D["text"]   = "VOLTAGE_INS_1V8D: " + str(int(data[26+OFFSET:28+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_AVE_1V8D["text"]   = "VOLTAGE_INS_1V8D: " + str(int(data[28+OFFSET:30+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_MAX_1V8D["text"]   = "VOLTAGE_INS_1V8D: " + str(int(data[30+OFFSET:32+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_MIN_1V8D["text"]   = "VOLTAGE_INS_1V8D: " + str(int(data[32+OFFSET:34+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_INS_1V0SD["text"]  = "VOLTAGE_INS_1V0SD: " + str(int(data[34+OFFSET:36+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_AVE_1V0SD["text"]  = "VOLTAGE_INS_1V0SD: " + str(int(data[36+OFFSET:38+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_MAX_1V0SD["text"]  = "VOLTAGE_INS_1V0SD: " + str(int(data[38+OFFSET:40+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_MIN_1V0SD["text"]  = "VOLTAGE_INS_1V0SD: " + str(int(data[40+OFFSET:42+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_INS_0V95AD["text"] = "VOLTAGE_INS_0V95AD: " + str(int(data[42+OFFSET:44+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_AVE_0V95AD["text"] = "VOLTAGE_INS_0V95AD: " + str(int(data[44+OFFSET:46+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_MAX_0V95AD["text"] = "VOLTAGE_INS_0V95AD: " + str(int(data[46+OFFSET:48+OFFSET].hex(),16)/1000)+" V"
+		self.VOLTAGE_MIN_0V95AD["text"] = "VOLTAGE_INS_0V95AD: " + str(int(data[48+OFFSET:50+OFFSET].hex(),16)/1000)+" V"
 
 		### CURRENTS ###
-		self.CURRENT_INS_IN["text"] = "CURRENT INS IN: " + str(int(data[48+2+OFFSET: 48+4+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+2+OFFSET: 48+4+OFFSET].hex(),16)).grid(row=13, column=  8,sticky=W)
-		self.CURRENT_AVE_IN["text"] = "CURRENT AVE IN: " + str(int(data[48+4+OFFSET: 48+6+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+4+OFFSET: 48+6+OFFSET].hex(),16)).grid(row=14, column=  8,sticky=W)
-		self.CURRENT_MAX_IN["text"] = "CURRENT MAX IN: " + str(int(data[48+6+OFFSET: 48+8+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+6+OFFSET: 48+8+OFFSET].hex(),16)).grid(row=15, column=  8,sticky=W)
-		self.CURRENT_MIN_IN["text"] = "CURRENT MIN IN: " + str(int(data[48+8+OFFSET: 48+10+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+8+OFFSET: 48+10+OFFSET].hex(),16)).grid(row=16, column= 8,sticky=W)
-		self.CURRENT_INS_3V3D["text"] = "CURRENT INS 3V3D: " + str(int(data[48+10+OFFSET:48+12+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+10+OFFSET:48+12+OFFSET].hex(),16)).grid(row=17, column=8,sticky=W)
-		self.CURRENT_AVE_3V3D["text"] = "CURRENT AVE 3V3D: " + str(int(data[48+12+OFFSET:48+14+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+12+OFFSET:48+14+OFFSET].hex(),16)).grid(row=18, column=8,sticky=W)
-		self.CURRENT_MAX_3V3D["text"] = "CURRENT MAX 3V3D: " + str(int(data[48+14+OFFSET:48+16+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+14+OFFSET:48+16+OFFSET].hex(),16)).grid(row=19, column=8,sticky=W)
-		self.CURRENT_MIN_3V3D["text"] = "CURRENT MIN 3V3D: " + str(int(data[48+16+OFFSET:48+18+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+16+OFFSET:48+18+OFFSET].hex(),16)).grid(row=20, column=8,sticky=W)
-		self.CURRENT_INS_2V5D["text"] = "CURRENT INS 2V5D: " + str(int(data[48+18+OFFSET:48+20+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+18+OFFSET:48+20+OFFSET].hex(),16)).grid(row=13, column=10,sticky=W)
-		self.CURRENT_AVE_2V5D["text"] = "CURRENT AVE 2V5D: " + str(int(data[48+20+OFFSET:48+22+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+20+OFFSET:48+22+OFFSET].hex(),16)).grid(row=14, column=10,sticky=W)
-		self.CURRENT_MAX_2V5D["text"] = "CURRENT MAX 2V5D: " + str(int(data[48+22+OFFSET:48+24+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+22+OFFSET:48+24+OFFSET].hex(),16)).grid(row=15, column=10,sticky=W)
-		self.CURRENT_MIN_2V5D["text"] = "CURRENT MIN 2V5D: " + str(int(data[48+24+OFFSET:48+26+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+24+OFFSET:48+26+OFFSET].hex(),16)).grid(row=16, column=10,sticky=W)
-		self.CURRENT_INS_1V8D["text"] = "CURRENT INS 1V8D: " + str(int(data[48+26+OFFSET:48+28+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+26+OFFSET:48+28+OFFSET].hex(),16)).grid(row=17, column=10,sticky=W)
-		self.CURRENT_AVE_1V8D["text"] = "CURRENT AVE 1V8D: " + str(int(data[48+28+OFFSET:48+30+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+28+OFFSET:48+30+OFFSET].hex(),16)).grid(row=18, column=10,sticky=W)
-		self.CURRENT_MAX_1V8D["text"] = "CURRENT MAX 1V8D: " + str(int(data[48+30+OFFSET:48+32+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+30+OFFSET:48+32+OFFSET].hex(),16)).grid(row=19, column=10,sticky=W)
-		self.CURRENT_MIN_1V8D["text"] = "CURRENT MIN 1V8D: " + str(int(data[48+32+OFFSET:48+34+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+32+OFFSET:48+34+OFFSET].hex(),16)).grid(row=20, column=10,sticky=W)
-		self.CURRENT_INS_1V0SD["text"] = "CURRENT INS 1V0SD: " + str(int(data[48+34+OFFSET:48+36+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+34+OFFSET:48+36+OFFSET].hex(),16)).grid(row=13, column=12,sticky=W)
-		self.CURRENT_AVE_1V0SD["text"] = "CURRENT AVE 1V0SD: " + str(int(data[48+36+OFFSET:48+38+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+36+OFFSET:48+38+OFFSET].hex(),16)).grid(row=14, column=12,sticky=W)
-		self.CURRENT_MAX_1V0SD["text"] = "CURRENT MAX 1V0SD: " + str(int(data[48+38+OFFSET:48+40+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+38+OFFSET:48+40+OFFSET].hex(),16)).grid(row=15, column=12,sticky=W)
-		self.CURRENT_MIN_1V0SD["text"] = "CURRENT MIN 1V0SD: " + str(int(data[48+40+OFFSET:48+42+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+40+OFFSET:48+42+OFFSET].hex(),16)).grid(row=16, column=12,sticky=W)
-		self.CURRENT_INS_0V95AD["text"] = "CURRENT INS 0V95AD: " + str(int(data[48+42+OFFSET:48+44+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+42+OFFSET:48+44+OFFSET].hex(),16)).grid(row=17, column=12,sticky=W)
-		self.CURRENT_AVE_0V95AD["text"] = "CURRENT AVE 0V95AD: " + str(int(data[48+44+OFFSET:48+46+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+44+OFFSET:48+46+OFFSET].hex(),16)).grid(row=18, column=12,sticky=W)
-		self.CURRENT_MAX_0V95AD["text"] = "CURRENT MAX 0V95AD: " + str(int(data[48+46+OFFSET:48+48+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+46+OFFSET:48+48+OFFSET].hex(),16)).grid(row=19, column=12,sticky=W)
-		self.CURRENT_MIN_0V95AD["text"] = "CURRENT MIN 0V95AD: " + str(int(data[48+48+OFFSET:48+50+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+48+OFFSET:48+50+OFFSET].hex(),16)).grid(row=20, column=12,sticky=W)
+		self.CURRENT_INS_IN["text"] = "CURRENT INS IN: " + str(int(data[48+2+OFFSET: 48+4+OFFSET].hex(),16))
+		self.CURRENT_AVE_IN["text"] = "CURRENT AVE IN: " + str(int(data[48+4+OFFSET: 48+6+OFFSET].hex(),16))
+		self.CURRENT_MAX_IN["text"] = "CURRENT MAX IN: " + str(int(data[48+6+OFFSET: 48+8+OFFSET].hex(),16))
+		self.CURRENT_MIN_IN["text"] = "CURRENT MIN IN: " + str(int(data[48+8+OFFSET: 48+10+OFFSET].hex(),16))
+		self.CURRENT_INS_3V3D["text"] = "CURRENT INS 3V3D: " + str(int(data[48+10+OFFSET:48+12+OFFSET].hex(),16))
+		self.CURRENT_AVE_3V3D["text"] = "CURRENT AVE 3V3D: " + str(int(data[48+12+OFFSET:48+14+OFFSET].hex(),16))
+		self.CURRENT_MAX_3V3D["text"] = "CURRENT MAX 3V3D: " + str(int(data[48+14+OFFSET:48+16+OFFSET].hex(),16))
+		self.CURRENT_MIN_3V3D["text"] = "CURRENT MIN 3V3D: " + str(int(data[48+16+OFFSET:48+18+OFFSET].hex(),16))
+		self.CURRENT_INS_2V5D["text"] = "CURRENT INS 2V5D: " + str(int(data[48+18+OFFSET:48+20+OFFSET].hex(),16))
+		self.CURRENT_AVE_2V5D["text"] = "CURRENT AVE 2V5D: " + str(int(data[48+20+OFFSET:48+22+OFFSET].hex(),16))
+		self.CURRENT_MAX_2V5D["text"] = "CURRENT MAX 2V5D: " + str(int(data[48+22+OFFSET:48+24+OFFSET].hex(),16))
+		self.CURRENT_MIN_2V5D["text"] = "CURRENT MIN 2V5D: " + str(int(data[48+24+OFFSET:48+26+OFFSET].hex(),16))
+		self.CURRENT_INS_1V8D["text"] = "CURRENT INS 1V8D: " + str(int(data[48+26+OFFSET:48+28+OFFSET].hex(),16))
+		self.CURRENT_AVE_1V8D["text"] = "CURRENT AVE 1V8D: " + str(int(data[48+28+OFFSET:48+30+OFFSET].hex(),16))
+		self.CURRENT_MAX_1V8D["text"] = "CURRENT MAX 1V8D: " + str(int(data[48+30+OFFSET:48+32+OFFSET].hex(),16))
+		self.CURRENT_MIN_1V8D["text"] = "CURRENT MIN 1V8D: " + str(int(data[48+32+OFFSET:48+34+OFFSET].hex(),16))
+		self.CURRENT_INS_1V0SD["text"] = "CURRENT INS 1V0SD: " + str(int(data[48+34+OFFSET:48+36+OFFSET].hex(),16))
+		self.CURRENT_AVE_1V0SD["text"] = "CURRENT AVE 1V0SD: " + str(int(data[48+36+OFFSET:48+38+OFFSET].hex(),16))
+		self.CURRENT_MAX_1V0SD["text"] = "CURRENT MAX 1V0SD: " + str(int(data[48+38+OFFSET:48+40+OFFSET].hex(),16))
+		self.CURRENT_MIN_1V0SD["text"] = "CURRENT MIN 1V0SD: " + str(int(data[48+40+OFFSET:48+42+OFFSET].hex(),16))
+		self.CURRENT_INS_0V95AD["text"] = "CURRENT INS 0V95AD: " + str(int(data[48+42+OFFSET:48+44+OFFSET].hex(),16))
+		self.CURRENT_AVE_0V95AD["text"] = "CURRENT AVE 0V95AD: " + str(int(data[48+44+OFFSET:48+46+OFFSET].hex(),16))
+		self.CURRENT_MAX_0V95AD["text"] = "CURRENT MAX 0V95AD: " + str(int(data[48+46+OFFSET:48+48+OFFSET].hex(),16))
+		self.CURRENT_MIN_0V95AD["text"] = "CURRENT MIN 0V95AD: " + str(int(data[48+48+OFFSET:48+50+OFFSET].hex(),16))
 
-		self.A7_TEMPERATURE["text"] = "A7 TEMPERATURE: " +  str(int(data[98+OFFSET:100+OFFSET].hex(),16))#= Label(self, justify=LEFT, wraplength=800, text=str(int(data[98+OFFSET:100+OFFSET].hex(),16)).grid(row=13, column=16, sticky=W)
-		self.PC1_TEMPERATURE["text"] = "PC1 TEMPERATURE: " + str(int(data[100+OFFSET:102+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[98+OFFSET:100+OFFSET].hex(),16)).grid(row=14, column=16, sticky=W)
-		self.PC2_TEMPERATURE["text"] = "PC2 TEMPERATURE: " + str(int(data[102+OFFSET:104+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[98+OFFSET:100+OFFSET].hex(),16)).grid(row=15, column=16, sticky=W)
+		self.A7_TEMPERATURE["text"] = "A7 TEMPERATURE: " +  str(int(data[98+OFFSET:100+OFFSET].hex(),16))
+		self.PC1_TEMPERATURE["text"] = "PC1 TEMPERATURE: " + str(int(data[100+OFFSET:102+OFFSET].hex(),16))
+		self.PC2_TEMPERATURE["text"] = "PC2 TEMPERATURE: " + str(int(data[102+OFFSET:104+OFFSET].hex(),16))
 
 		### RUNTIME ###
-		self.DAYS["text"] = "DAYS: " + str(int(data[104+OFFSET:108+OFFSET].hex(),16))#= Label(self, justify=LEFT, wraplength=800, text=str(int(data[104+OFFSET:108+OFFSET].hex(),16)).grid(row=16, column=16, stick=W)
-		self.HOURS["text"] = "HOURS: " +  str(int(data[108+OFFSET:112+OFFSET].hex(),16))#= Label(self, justify=LEFT, wraplength=800, text=str(int(data[108+OFFSET:112+OFFSET].hex(),16)).grid(row=17, column=16, stick=W)
-		self.MINUTES["text"] = "MINUTES: " + str(int(data[112+OFFSET:116+OFFSET].hex(),16))#= Label(self, justify=LEFT, wraplength=800, text=str(int(data[112+OFFSET:116+OFFSET].hex(),16)).grid(row=18, column=16, stick=W)
-		self.SECONDS["text"] = "SECONDS: " + str(int(data[116+OFFSET:120+OFFSET].hex(),16))#= Label(self, justify=LEFT, wraplength=800, text=str(int(data[116+OFFSET:120+OFFSET].hex(),16)).grid(row=19, column=16, stick=W)
+		self.DAYS["text"] = "DAYS: " + str(int(data[104+OFFSET:108+OFFSET].hex(),16))
+		self.HOURS["text"] = "HOURS: " +  str(int(data[108+OFFSET:112+OFFSET].hex(),16))
+		self.MINUTES["text"] = "MINUTES: " + str(int(data[112+OFFSET:116+OFFSET].hex(),16))
+		self.SECONDS["text"] = "SECONDS: " + str(int(data[116+OFFSET:120+OFFSET].hex(),16))
 
-		self.CRC_HEALTH["text"] = "CRC: " + str(int(data[120+OFFSET:122+OFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[120+OFFSET:122+OFFSET].hex(),16)).grid(row=20, column=16, stick=W)
+		self.CRC_HEALTH["text"] = "CRC: " + str(int(data[120+OFFSET:122+OFFSET].hex(),16))
 
 	def updatePower(self,data):
 		DATAOFFSET = 14
 		POWERROWOFFSET = 10
 
 		#Initial set of data from EPS
-		self.POWER_DATA["text"] = "POWER DATA: " + str(int(data[0+DATAOFFSET:4+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[0+DATAOFFSET:4+DATAOFFSET].hex(),16)).grid(row=16+POWERROWOFFSET, column=2,sticky=W)
-		self.BYTES_SENT["text"] = "Bytes Sent: " + str(int(data[4+DATAOFFSET:8+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[4+DATAOFFSET:8+DATAOFFSET].hex(),16)).grid(row=16+POWERROWOFFSET, column=4,sticky=W)
-		self.BYTES_RECV["text"] = "Bytes Recv: " + str(int(data[8+DATAOFFSET:10+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[8+DATAOFFSET:10+DATAOFFSET].hex(),16)).grid(row=17+POWERROWOFFSET, column=2,sticky=W)
-		self.PKTS_SENT["text"] = "PKTS Sent: " + str(int(data[10+DATAOFFSET:12+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[10+DATAOFFSET:12+DATAOFFSET].hex(),16)).grid(row=17+POWERROWOFFSET, column=4,sticky=W)
-		self.PKTS_RECV["text"] = "PKTS Recv: " + str(int(data[12+DATAOFFSET:14+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[12+DATAOFFSET:14+DATAOFFSET].hex(),16)).grid(row=18+POWERROWOFFSET, column=2,sticky=W)
-		self.INVLD_PACK["text"] = "Invld Pack: " + str(int(data[14+DATAOFFSET:16+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[14+DATAOFFSET:16+DATAOFFSET].hex(),16)).grid(row=18+POWERROWOFFSET, column=4,sticky=W)
-		self.CRC_FAILS["text"] = "CRC Fails: " + str(int(data[16+DATAOFFSET:18+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[16+DATAOFFSET:18+DATAOFFSET].hex(),16)).grid(row=19+POWERROWOFFSET, column=2,sticky=W)
-		self.STATUS["text"] = "STATUS: " + str(int(data[18+DATAOFFSET:20+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[18+DATAOFFSET:20+DATAOFFSET].hex(),16)).grid(row=19+POWERROWOFFSET, column=4,sticky=W)
-		self.RESET_FLAG["text"] = "Reset Flag: " + str(int(data[20+DATAOFFSET:22+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[20+DATAOFFSET:22+DATAOFFSET].hex(),16)).grid(row=20+POWERROWOFFSET, column=2,sticky=W)
+		self.POWER_DATA["text"] = "POWER DATA: " + str(int(data[0+DATAOFFSET:4+DATAOFFSET].hex(),16))
+		self.BYTES_SENT["text"] = "Bytes Sent: " + str(int(data[4+DATAOFFSET:8+DATAOFFSET].hex(),16))
+		self.BYTES_RECV["text"] = "Bytes Recv: " + str(int(data[8+DATAOFFSET:10+DATAOFFSET].hex(),16))
+		self.PKTS_SENT["text"] = "PKTS Sent: " + str(int(data[10+DATAOFFSET:12+DATAOFFSET].hex(),16))
+		self.PKTS_RECV["text"] = "PKTS Recv: " + str(int(data[12+DATAOFFSET:14+DATAOFFSET].hex(),16))
+		self.INVLD_PACK["text"] = "Invld Pack: " + str(int(data[14+DATAOFFSET:16+DATAOFFSET].hex(),16))
+		self.CRC_FAILS["text"] = "CRC Fails: " + str(int(data[16+DATAOFFSET:18+DATAOFFSET].hex(),16))
+		self.STATUS["text"] = "STATUS: " + str(int(data[18+DATAOFFSET:20+DATAOFFSET].hex(),16))
+		self.RESET_FLAG["text"] = "Reset Flag: " + str(int(data[20+DATAOFFSET:22+DATAOFFSET].hex(),16))
 
 		#SA1 SA2 SA3
-		self.SA1_BOOST_V["text"] = "SA1 BOOST V: " + str(int(data[22+DATAOFFSET:24+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[22+DATAOFFSET:24+DATAOFFSET].hex(),16)).grid(row=20+POWERROWOFFSET, column=2,sticky=W)
-		self.SA1_V["text"] = "SA1 V: " + str(int(data[24+DATAOFFSET:26+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[24+DATAOFFSET:26+DATAOFFSET].hex(),16)).grid(row=20+POWERROWOFFSET, column=4,sticky=W)
-		self.SA2_BOOST_V["text"] = "SA2 BOOST V: " + str(int(data[26+DATAOFFSET:28+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[26+DATAOFFSET:28+DATAOFFSET].hex(),16)).grid(row=21+POWERROWOFFSET, column=2,sticky=W)
-		self.SA2_V["text"] = "SA2 V: " + str(int(data[28+DATAOFFSET:30+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[28+DATAOFFSET:30+DATAOFFSET].hex(),16)).grid(row=21+POWERROWOFFSET, column=4,sticky=W)
-		self.SA3_BOOST_V["text"] = "SA3 BOOST V: " + str(int(data[30+DATAOFFSET:32+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[30+DATAOFFSET:32+DATAOFFSET].hex(),16)).grid(row=22+POWERROWOFFSET, column=2,sticky=W)
-		self.SA3_V["text"] = "SA3_V: " + str(int(data[32+DATAOFFSET:34+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[32+DATAOFFSET:34+DATAOFFSET].hex(),16)).grid(row=22+POWERROWOFFSET, column=4,sticky=W)
+		self.SA1_BOOST_V["text"] = "SA1 BOOST V: " + str(int(data[22+DATAOFFSET:24+DATAOFFSET].hex(),16))
+		self.SA1_V["text"] = "SA1 V: " + str(int(data[24+DATAOFFSET:26+DATAOFFSET].hex(),16))
+		self.SA2_BOOST_V["text"] = "SA2 BOOST V: " + str(int(data[26+DATAOFFSET:28+DATAOFFSET].hex(),16))
+		self.SA2_V["text"] = "SA2 V: " + str(int(data[28+DATAOFFSET:30+DATAOFFSET].hex(),16))
+		self.SA3_BOOST_V["text"] = "SA3 BOOST V: " + str(int(data[30+DATAOFFSET:32+DATAOFFSET].hex(),16))
+		self.SA3_V["text"] = "SA3_V: " + str(int(data[32+DATAOFFSET:34+DATAOFFSET].hex(),16))
 
 		#BATT TEMPS
-		self.BATT2_TEMP["text"] = "BATT2 TEMP: " + str(int(data[34+DATAOFFSET:36+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[34+DATAOFFSET:36+DATAOFFSET].hex(),16)).grid(row=23+POWERROWOFFSET, column=2,sticky=W)
-		self.BATT1_TEMP["text"] = "BATT1 TEMP: " + str(int(data[36+DATAOFFSET:38+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[36+DATAOFFSET:38+DATAOFFSET].hex(),16)).grid(row=23+POWERROWOFFSET, column=4,sticky=W)
+		self.BATT2_TEMP["text"] = "BATT2 TEMP: " + str(int(data[34+DATAOFFSET:36+DATAOFFSET].hex(),16))
+		self.BATT1_TEMP["text"] = "BATT1 TEMP: " + str(int(data[36+DATAOFFSET:38+DATAOFFSET].hex(),16))
 
 		#BUS VOLTAGE
-		self.FIVEV0BUS_V["text"] = "5V0BUS V: " + str(int(data[38+DATAOFFSET:40+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[38+DATAOFFSET:40+DATAOFFSET].hex(),16)).grid(row=23+POWERROWOFFSET, column=6,sticky=W)
-		self.THREEV3BUS_V["text"] = "3V3BUS_V" + str(int(data[40+DATAOFFSET:42+DATAOFFSET].hex(),16))# = Label(self, justify=LEFT, wraplength=800, text=str(int(data[40+DATAOFFSET:42+DATAOFFSET].hex(),16)).grid(row=23+POWERROWOFFSET, column=8,sticky=W)
+		self.FIVEV0BUS_V["text"] = "5V0BUS V: " + str(int(data[38+DATAOFFSET:40+DATAOFFSET].hex(),16))
+		self.THREEV3BUS_V["text"] = "3V3BUS_V" + str(int(data[40+DATAOFFSET:42+DATAOFFSET].hex(),16))
 
 		#BATTERY VOLTAGE
-		self.VBATT2_V["text"] = "VBATT2 V: " + str(int(data[42+DATAOFFSET:44+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[42+DATAOFFSET:44+DATAOFFSET].hex(),16)).grid(row=24+POWERROWOFFSET, column=2,sticky=W)
-		self.VBATT_V["text"] = "VBATT V: " + str(int(data[44+DATAOFFSET:46+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[44+DATAOFFSET:46+DATAOFFSET].hex(),16)).grid(row=24+POWERROWOFFSET, column=4,sticky=W)
-		self.VBATT1_V["text"] = "VBATT1 V: " + str(int(data[46+DATAOFFSET:48+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[46+DATAOFFSET:48+DATAOFFSET].hex(),16)).grid(row=24+POWERROWOFFSET, column=6,sticky=W)
+		self.VBATT2_V["text"] = "VBATT2 V: " + str(int(data[42+DATAOFFSET:44+DATAOFFSET].hex(),16))
+		self.VBATT_V["text"] = "VBATT V: " + str(int(data[44+DATAOFFSET:46+DATAOFFSET].hex(),16))
+		self.VBATT1_V["text"] = "VBATT1 V: " + str(int(data[46+DATAOFFSET:48+DATAOFFSET].hex(),16))
 
 		#BUS TEMPS
-		self.THREEV3BUS_TEMP["text"] = "3V3BUS TEMP: " + str(int(data[48+DATAOFFSET:50+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[48+DATAOFFSET:50+DATAOFFSET].hex(),16)).grid(row=25+POWERROWOFFSET, column=2,sticky=W)
-		self.FIVEV0BUS_TEMP["text"] = "5V0BUS_TEMP: " + str(int(data[50+DATAOFFSET:52+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[50+DATAOFFSET:52+DATAOFFSET].hex(),16)).grid(row=25+POWERROWOFFSET, column=4,sticky=W)
+		self.THREEV3BUS_TEMP["text"] = "3V3BUS TEMP: " + str(int(data[48+DATAOFFSET:50+DATAOFFSET].hex(),16))
+		self.FIVEV0BUS_TEMP["text"] = "5V0BUS_TEMP: " + str(int(data[50+DATAOFFSET:52+DATAOFFSET].hex(),16))
 
 		#3V3EPS
-		self.THREEV3EPS_V["text"] = "3V3EPS V: " + str(int(data[52+DATAOFFSET:54+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[52+DATAOFFSET:54+DATAOFFSET].hex(),16)).grid(row=25+POWERROWOFFSET, column=6,sticky=W)
+		self.THREEV3EPS_V["text"] = "3V3EPS V: " + str(int(data[52+DATAOFFSET:54+DATAOFFSET].hex(),16))
 
 		#SAx_I
-		self.SA1_I["text"] = "SA1_I: " + str(int(data[54+DATAOFFSET:56+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[54+DATAOFFSET:56+DATAOFFSET].hex(),16)).grid(row=26+POWERROWOFFSET, column=2,sticky=W)
-		self.SA2_I["text"] = "SA2_I: " + str(int(data[56+DATAOFFSET:58+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[56+DATAOFFSET:58+DATAOFFSET].hex(),16)).grid(row=26+POWERROWOFFSET, column=4,sticky=W)
-		self.SA3_I["text"] = "SA3_I: " + str(int(data[58+DATAOFFSET:60+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[58+DATAOFFSET:60+DATAOFFSET].hex(),16)).grid(row=26+POWERROWOFFSET, column=6,sticky=W)
+		self.SA1_I["text"] = "SA1_I: " + str(int(data[54+DATAOFFSET:56+DATAOFFSET].hex(),16))
+		self.SA2_I["text"] = "SA2_I: " + str(int(data[56+DATAOFFSET:58+DATAOFFSET].hex(),16))
+		self.SA3_I["text"] = "SA3_I: " + str(int(data[58+DATAOFFSET:60+DATAOFFSET].hex(),16))
 
 		#CURRENT STATS
-		self.DISCHARGE_I["text"] = "DISCHARGE_I: " + str(int(data[60+DATAOFFSET:62+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[60+DATAOFFSET:62+DATAOFFSET].hex(),16)).grid(row=27+POWERROWOFFSET, column=2,sticky=W)
-		self.CHARGE_I["text"] = "CHARGE_I: " + str(int(data[62+DATAOFFSET:64+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[62+DATAOFFSET:64+DATAOFFSET].hex(),16)).grid(row=27+POWERROWOFFSET, column=4,sticky=W)
-		self.THREEV3BUS_I["text"] = "3V3BUS_I: " + str(int(data[64+DATAOFFSET:66+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[64+DATAOFFSET:66+DATAOFFSET].hex(),16)).grid(row=27+POWERROWOFFSET, column=6,sticky=W)
-		self.VBATT1_I["text"] = "VBATT1_I: " + str(int(data[66+DATAOFFSET:68+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[66+DATAOFFSET:68+DATAOFFSET].hex(),16)).grid(row=27+POWERROWOFFSET, column=8,sticky=W)
-		self.VBATT2_I["text"] = "VBATT2_I: " + str(int(data[68+DATAOFFSET:70+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[68+DATAOFFSET:70+DATAOFFSET].hex(),16)).grid(row=27+POWERROWOFFSET, column=10,sticky=W)
+		self.DISCHARGE_I["text"] = "DISCHARGE_I: " + str(int(data[60+DATAOFFSET:62+DATAOFFSET].hex(),16))
+		self.CHARGE_I["text"] = "CHARGE_I: " + str(int(data[62+DATAOFFSET:64+DATAOFFSET].hex(),16))
+		self.THREEV3BUS_I["text"] = "3V3BUS_I: " + str(int(data[64+DATAOFFSET:66+DATAOFFSET].hex(),16))
+		self.VBATT1_I["text"] = "VBATT1_I: " + str(int(data[66+DATAOFFSET:68+DATAOFFSET].hex(),16))
+		self.VBATT2_I["text"] = "VBATT2_I: " + str(int(data[68+DATAOFFSET:70+DATAOFFSET].hex(),16))
 
 		#SA TEMPS
-		self.SA_YM_TEMP["text"] = "SA_YM_TEMP: " + str(int(data[70+DATAOFFSET:72+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[70+DATAOFFSET:72+DATAOFFSET].hex(),16)).grid(row=28+POWERROWOFFSET, column=2,sticky=W)
-		self.SA_ZP_TEMP["text"] = "SA_ZP_TEMP: " + str(int(data[72+DATAOFFSET:74+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[72+DATAOFFSET:74+DATAOFFSET].hex(),16)).grid(row=28+POWERROWOFFSET, column=4,sticky=W)
-		self.SA_ZM_TEMP["text"] = "SA_ZM_TEMP: " + str(int(data[74+DATAOFFSET:76+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[74+DATAOFFSET:76+DATAOFFSET].hex(),16)).grid(row=28+POWERROWOFFSET, column=6,sticky=W)
-		self.SA_XP_TEMP["text"] = "SA_XP_TEMP: " + str(int(data[76+DATAOFFSET:78+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[76+DATAOFFSET:78+DATAOFFSET].hex(),16)).grid(row=28+POWERROWOFFSET, column=8,sticky=W)
-		self.SA_YP_TEMP["text"] = "SA_YP_TEMP: " + str(int(data[78+DATAOFFSET:80+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[78+DATAOFFSET:80+DATAOFFSET].hex(),16)).grid(row=28+POWERROWOFFSET, column=10,sticky=W)
+		self.SA_YM_TEMP["text"] = "SA_YM_TEMP: " + str(int(data[70+DATAOFFSET:72+DATAOFFSET].hex(),16))
+		self.SA_ZP_TEMP["text"] = "SA_ZP_TEMP: " + str(int(data[72+DATAOFFSET:74+DATAOFFSET].hex(),16))
+		self.SA_ZM_TEMP["text"] = "SA_ZM_TEMP: " + str(int(data[74+DATAOFFSET:76+DATAOFFSET].hex(),16))
+		self.SA_XP_TEMP["text"] = "SA_XP_TEMP: " + str(int(data[76+DATAOFFSET:78+DATAOFFSET].hex(),16))
+		self.SA_YP_TEMP["text"] = "SA_YP_TEMP: " + str(int(data[78+DATAOFFSET:80+DATAOFFSET].hex(),16))
 
 		#3V3EPS_I
-		self.THREEV3EPS_I["text"] = "3V3EPS_I: " + str(int(data[80+DATAOFFSET:82+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[80+DATAOFFSET:82+DATAOFFSET].hex(),16)).grid(row=29+POWERROWOFFSET, column=2,sticky=W)
-		self.FIVEV0EPS_I["text"] = "5V0EPS_I: " + str(int(data[82+DATAOFFSET:84+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[82+DATAOFFSET:84+DATAOFFSET].hex(),16)).grid(row=29+POWERROWOFFSET, column=4,sticky=W)
+		self.THREEV3EPS_I["text"] = "3V3EPS_I: " + str(int(data[80+DATAOFFSET:82+DATAOFFSET].hex(),16))
+		self.FIVEV0EPS_I["text"] = "5V0EPS_I: " + str(int(data[82+DATAOFFSET:84+DATAOFFSET].hex(),16))
 
 		#HIST_SA_1
-		self.HIST_SA_1_P_1["text"] = "HIST SA 1 P 1: " + str(int(data[84+DATAOFFSET:86+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[84+DATAOFFSET:86+DATAOFFSET].hex(),16)).grid(row=30+POWERROWOFFSET, column=2,sticky=W)
-		self.HIST_SA_1_P_2["text"] = "HIST SA 1 P 2: " + str(int(data[86+DATAOFFSET:88+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[86+DATAOFFSET:88+DATAOFFSET].hex(),16)).grid(row=30+POWERROWOFFSET, column=4,sticky=W)
-		self.HIST_SA_1_P_3["text"] = "HIST SA 1 P 3: " + str(int(data[88+DATAOFFSET:90+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[88+DATAOFFSET:90+DATAOFFSET].hex(),16)).grid(row=30+POWERROWOFFSET, column=6,sticky=W)
-		self.HIST_SA_1_P_4["text"] = "HIST SA 1 P 4: " + str(int(data[90+DATAOFFSET:92+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[90+DATAOFFSET:92+DATAOFFSET].hex(),16)).grid(row=30+POWERROWOFFSET, column=8,sticky=W)
-		self.HIST_SA_1_P_5["text"] = "HIST SA 1 P 5: " + str(int(data[92+DATAOFFSET:94+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[92+DATAOFFSET:94+DATAOFFSET].hex(),16)).grid(row=30+POWERROWOFFSET, column=10,sticky=W)
-		self.HIST_SA_1_P_6["text"] = "HIST SA 1 P 6: " + str(int(data[94+DATAOFFSET:96+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[94+DATAOFFSET:96+DATAOFFSET].hex(),16)).grid(row=30+POWERROWOFFSET, column=12,sticky=W)
+		self.HIST_SA_1_P_1["text"] = "HIST SA 1 P 1: " + str(int(data[84+DATAOFFSET:86+DATAOFFSET].hex(),16))
+		self.HIST_SA_1_P_2["text"] = "HIST SA 1 P 2: " + str(int(data[86+DATAOFFSET:88+DATAOFFSET].hex(),16))
+		self.HIST_SA_1_P_3["text"] = "HIST SA 1 P 3: " + str(int(data[88+DATAOFFSET:90+DATAOFFSET].hex(),16))
+		self.HIST_SA_1_P_4["text"] = "HIST SA 1 P 4: " + str(int(data[90+DATAOFFSET:92+DATAOFFSET].hex(),16))
+		self.HIST_SA_1_P_5["text"] = "HIST SA 1 P 5: " + str(int(data[92+DATAOFFSET:94+DATAOFFSET].hex(),16))
+		self.HIST_SA_1_P_6["text"] = "HIST SA 1 P 6: " + str(int(data[94+DATAOFFSET:96+DATAOFFSET].hex(),16))
 
 		#HIST_SA_2
-		self.HIST_SA_2_P_1["text"] = "HIST SA 2 P 1: " + str(int(data[96+DATAOFFSET:98+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[96+DATAOFFSET:98+DATAOFFSET].hex(),16)).grid(row=31+POWERROWOFFSET, column=2,sticky=W)
-		self.HIST_SA_2_P_2["text"] = "HIST SA 2 P 2: " + str(int(data[98+DATAOFFSET:100+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[98+DATAOFFSET:100+DATAOFFSET].hex(),16)).grid(row=31+POWERROWOFFSET, column=4,sticky=W)
-		self.HIST_SA_2_P_3["text"] = "HIST SA 2 P 3: " + str(int(data[100+DATAOFFSET:102+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[100+DATAOFFSET:102+DATAOFFSET].hex(),16)).grid(row=31+POWERROWOFFSET, column=6,sticky=W)
-		self.HIST_SA_2_P_4["text"] = "HIST SA 2 P 4: " + str(int(data[102+DATAOFFSET:104+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[102+DATAOFFSET:104+DATAOFFSET].hex(),16)).grid(row=31+POWERROWOFFSET, column=8,sticky=W)
-		self.HIST_SA_2_P_5["text"] = "HIST SA 2 P 5: " + str(int(data[104+DATAOFFSET:106+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[104+DATAOFFSET:106+DATAOFFSET].hex(),16)).grid(row=31+POWERROWOFFSET, column=10,sticky=W)
-		self.HIST_SA_2_P_6["text"] = "HIST SA 2 P 6: " + str(int(data[106+DATAOFFSET:108+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[106+DATAOFFSET:108+DATAOFFSET].hex(),16)).grid(row=31+POWERROWOFFSET, column=12,sticky=W)
+		self.HIST_SA_2_P_1["text"] = "HIST SA 2 P 1: " + str(int(data[96+DATAOFFSET:98+DATAOFFSET].hex(),16))
+		self.HIST_SA_2_P_2["text"] = "HIST SA 2 P 2: " + str(int(data[98+DATAOFFSET:100+DATAOFFSET].hex(),16))
+		self.HIST_SA_2_P_3["text"] = "HIST SA 2 P 3: " + str(int(data[100+DATAOFFSET:102+DATAOFFSET].hex(),16))
+		self.HIST_SA_2_P_4["text"] = "HIST SA 2 P 4: " + str(int(data[102+DATAOFFSET:104+DATAOFFSET].hex(),16))
+		self.HIST_SA_2_P_5["text"] = "HIST SA 2 P 5: " + str(int(data[104+DATAOFFSET:106+DATAOFFSET].hex(),16))
+		self.HIST_SA_2_P_6["text"] = "HIST SA 2 P 6: " + str(int(data[106+DATAOFFSET:108+DATAOFFSET].hex(),16))
 
 		#HIST_SA_3
-		self.HIST_SA_3_P_1["text"] = "HIST SA 3 P 1" + str(int(data[108+DATAOFFSET:110+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[108+DATAOFFSET:110+DATAOFFSET].hex(),16)).grid(row=32+POWERROWOFFSET, column=2,sticky=W)
-		self.HIST_SA_3_P_2["text"] = "HIST SA 3 P 2" + str(int(data[110+DATAOFFSET:112+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[110+DATAOFFSET:112+DATAOFFSET].hex(),16)).grid(row=32+POWERROWOFFSET, column=4,sticky=W)
-		self.HIST_SA_3_P_3["text"] = "HIST SA 3 P 3" + str(int(data[112+DATAOFFSET:114+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[112+DATAOFFSET:114+DATAOFFSET].hex(),16)).grid(row=32+POWERROWOFFSET, column=6,sticky=W)
-		self.HIST_SA_3_P_4["text"] = "HIST SA 3 P 4" + str(int(data[114+DATAOFFSET:116+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[114+DATAOFFSET:116+DATAOFFSET].hex(),16)).grid(row=32+POWERROWOFFSET, column=8,sticky=W)
-		self.HIST_SA_3_P_5["text"] = "HIST SA 3 P 5" + str(int(data[116+DATAOFFSET:118+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[116+DATAOFFSET:118+DATAOFFSET].hex(),16)).grid(row=32+POWERROWOFFSET, column=10,sticky=W)
-		self.HIST_SA_3_P_6["text"] = "HIST SA 3 P 6" + str(int(data[118+DATAOFFSET:120+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[118+DATAOFFSET:120+DATAOFFSET].hex(),16)).grid(row=32+POWERROWOFFSET, column=12,sticky=W)
+		self.HIST_SA_3_P_1["text"] = "HIST SA 3 P 1" + str(int(data[108+DATAOFFSET:110+DATAOFFSET].hex(),16))
+		self.HIST_SA_3_P_2["text"] = "HIST SA 3 P 2" + str(int(data[110+DATAOFFSET:112+DATAOFFSET].hex(),16))
+		self.HIST_SA_3_P_3["text"] = "HIST SA 3 P 3" + str(int(data[112+DATAOFFSET:114+DATAOFFSET].hex(),16))
+		self.HIST_SA_3_P_4["text"] = "HIST SA 3 P 4" + str(int(data[114+DATAOFFSET:116+DATAOFFSET].hex(),16))
+		self.HIST_SA_3_P_5["text"] = "HIST SA 3 P 5" + str(int(data[116+DATAOFFSET:118+DATAOFFSET].hex(),16))
+		self.HIST_SA_3_P_6["text"] = "HIST SA 3 P 6" + str(int(data[118+DATAOFFSET:120+DATAOFFSET].hex(),16))
 
 		#HIST_BATT_V
-		self.HIST_BATT_V_1["text"] = "HIST_BATT_V_1: " + str(int(data[120+DATAOFFSET:122+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[120+DATAOFFSET:122+DATAOFFSET].hex(),16)).grid(row=33+POWERROWOFFSET, column=2,sticky=W)
-		self.HIST_BATT_V_2["text"] = "HIST_BATT_V_2: " + str(int(data[122+DATAOFFSET:124+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[122+DATAOFFSET:124+DATAOFFSET].hex(),16)).grid(row=33+POWERROWOFFSET, column=4,sticky=W)
-		self.HIST_BATT_V_3["text"] = "HIST_BATT_V_3: " + str(int(data[124+DATAOFFSET:126+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[124+DATAOFFSET:126+DATAOFFSET].hex(),16)).grid(row=33+POWERROWOFFSET, column=6,sticky=W)
-		self.HIST_BATT_V_4["text"] = "HIST_BATT_V_4: " + str(int(data[126+DATAOFFSET:128+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[126+DATAOFFSET:128+DATAOFFSET].hex(),16)).grid(row=33+POWERROWOFFSET, column=8,sticky=W)
-		self.HIST_BATT_V_5["text"] = "HIST_BATT_V_5: " + str(int(data[128+DATAOFFSET:130+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[128+DATAOFFSET:130+DATAOFFSET].hex(),16)).grid(row=33+POWERROWOFFSET, column=10,sticky=W)
-		self.HIST_BATT_V_6["text"] = "HIST_BATT_V_6: " + str(int(data[130+DATAOFFSET:132+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[130+DATAOFFSET:132+DATAOFFSET].hex(),16)).grid(row=33+POWERROWOFFSET, column=12,sticky=W)
+		self.HIST_BATT_V_1["text"] = "HIST_BATT_V_1: " + str(int(data[120+DATAOFFSET:122+DATAOFFSET].hex(),16))
+		self.HIST_BATT_V_2["text"] = "HIST_BATT_V_2: " + str(int(data[122+DATAOFFSET:124+DATAOFFSET].hex(),16))
+		self.HIST_BATT_V_3["text"] = "HIST_BATT_V_3: " + str(int(data[124+DATAOFFSET:126+DATAOFFSET].hex(),16))
+		self.HIST_BATT_V_4["text"] = "HIST_BATT_V_4: " + str(int(data[126+DATAOFFSET:128+DATAOFFSET].hex(),16))
+		self.HIST_BATT_V_5["text"] = "HIST_BATT_V_5: " + str(int(data[128+DATAOFFSET:130+DATAOFFSET].hex(),16))
+		self.HIST_BATT_V_6["text"] = "HIST_BATT_V_6: " + str(int(data[130+DATAOFFSET:132+DATAOFFSET].hex(),16))
 
 		#HIST_BATT_I
-		self.HIST_BATT_I_1["text"] = "HIST_BATT_I_1: " + str(int(data[132+DATAOFFSET:134+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[132+DATAOFFSET:134+DATAOFFSET].hex(),16)).grid(row=34+POWERROWOFFSET, column=2,sticky=W)
-		self.HIST_BATT_I_2["text"] = "HIST_BATT_I_2: " + str(int(data[134+DATAOFFSET:136+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[134+DATAOFFSET:136+DATAOFFSET].hex(),16)).grid(row=34+POWERROWOFFSET, column=4,sticky=W)
-		self.HIST_BATT_I_3["text"] = "HIST_BATT_I_3: " + str(int(data[136+DATAOFFSET:138+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[136+DATAOFFSET:138+DATAOFFSET].hex(),16)).grid(row=34+POWERROWOFFSET, column=6,sticky=W)
-		self.HIST_BATT_I_4["text"] = "HIST_BATT_I_4: " + str(int(data[138+DATAOFFSET:140+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[138+DATAOFFSET:140+DATAOFFSET].hex(),16)).grid(row=34+POWERROWOFFSET, column=8,sticky=W)
-		self.HIST_BATT_I_5["text"] = "HIST_BATT_I_5: " + str(int(data[140+DATAOFFSET:142+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[140+DATAOFFSET:142+DATAOFFSET].hex(),16)).grid(row=34+POWERROWOFFSET, column=10,sticky=W)
-		self.HIST_BATT_I_6["text"] = "HIST_BATT_I_6: " + str(int(data[142+DATAOFFSET:144+DATAOFFSET].hex(),16)) #= Label(self, justify=LEFT, wraplength=800, text=str(int(data[142+DATAOFFSET:144+DATAOFFSET].hex(),16))).grid(row=34+POWERROWOFFSET, column=12,sticky=W)
+		self.HIST_BATT_I_1["text"] = "HIST_BATT_I_1: " + str(int(data[132+DATAOFFSET:134+DATAOFFSET].hex(),16))
+		self.HIST_BATT_I_2["text"] = "HIST_BATT_I_2: " + str(int(data[134+DATAOFFSET:136+DATAOFFSET].hex(),16))
+		self.HIST_BATT_I_3["text"] = "HIST_BATT_I_3: " + str(int(data[136+DATAOFFSET:138+DATAOFFSET].hex(),16))
+		self.HIST_BATT_I_4["text"] = "HIST_BATT_I_4: " + str(int(data[138+DATAOFFSET:140+DATAOFFSET].hex(),16))
+		self.HIST_BATT_I_5["text"] = "HIST_BATT_I_5: " + str(int(data[140+DATAOFFSET:142+DATAOFFSET].hex(),16))
+		self.HIST_BATT_I_6["text"] = "HIST_BATT_I_6: " + str(int(data[142+DATAOFFSET:144+DATAOFFSET].hex(),16))
 
 
 
