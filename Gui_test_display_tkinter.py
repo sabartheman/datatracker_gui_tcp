@@ -306,6 +306,8 @@ class DataGui(Frame):
 
 		POWERROWOFFSET = 10
 
+		self.POWER_DATA = Label(self, text=" ")
+		self.POWER_DATA.grid(row=14+POWERROWOFFSET, column=1, sticky=W)
 
 		self.POWER_DATA = Label(self, text="POWER DATA: ")
 		self.POWER_DATA.grid(row=15+POWERROWOFFSET, column=1, sticky=W)
@@ -570,19 +572,19 @@ class DataGui(Frame):
 		self.CRC_HEALTH["text"] = "CRC: " + str(int(data[120+OFFSET:122+OFFSET].hex(),16))
 
 	def updatePower(self,data):
-		DATAOFFSET = 14
+		DATAOFFSET = 12
 		POWERROWOFFSET = 10
 
 		#Initial set of data from EPS
 		self.POWER_DATA["text"] = "POWER DATA: " + str(int(data[0+DATAOFFSET:4+DATAOFFSET].hex(),16))
-		self.BYTES_SENT["text"] = "Bytes Sent: " + str(int(data[4+DATAOFFSET:8+DATAOFFSET].hex(),16))
-		self.BYTES_RECV["text"] = "Bytes Recv: " + str(int(data[8+DATAOFFSET:10+DATAOFFSET].hex(),16))
-		self.PKTS_SENT["text"] = "PKTS Sent: " + str(int(data[10+DATAOFFSET:12+DATAOFFSET].hex(),16))
-		self.PKTS_RECV["text"] = "PKTS Recv: " + str(int(data[12+DATAOFFSET:14+DATAOFFSET].hex(),16))
-		self.INVLD_PACK["text"] = "Invld Pack: " + str(int(data[14+DATAOFFSET:16+DATAOFFSET].hex(),16))
-		self.CRC_FAILS["text"] = "CRC Fails: " + str(int(data[16+DATAOFFSET:18+DATAOFFSET].hex(),16))
-		self.STATUS["text"] = "STATUS: " + str(int(data[18+DATAOFFSET:20+DATAOFFSET].hex(),16))
-		self.RESET_FLAG["text"] = "Reset Flag: " + str(int(data[20+DATAOFFSET:22+DATAOFFSET].hex(),16))
+		self.BYTES_SENT["text"] = "Bytes Sent	: " + str(int(data[4+DATAOFFSET:8+DATAOFFSET].hex(),16))
+		self.BYTES_RECV["text"] = "Bytes Recv	: " + str(int(data[8+DATAOFFSET:10+DATAOFFSET].hex(),16))
+		self.PKTS_SENT["text"] = "PKTS Sent		: " + str(int(data[10+DATAOFFSET:12+DATAOFFSET].hex(),16))
+		self.PKTS_RECV["text"] = "PKTS Recv		: " + str(int(data[12+DATAOFFSET:14+DATAOFFSET].hex(),16))
+		self.INVLD_PACK["text"] = "Invld Pack	: " + str(int(data[14+DATAOFFSET:16+DATAOFFSET].hex(),16))
+		self.CRC_FAILS["text"] = "CRC Fails		: " + str(int(data[16+DATAOFFSET:18+DATAOFFSET].hex(),16))
+		self.STATUS["text"] = "STATUS		: " + str(int(data[18+DATAOFFSET:20+DATAOFFSET].hex(),16))
+		self.RESET_FLAG["text"] = "Reset Flag	: " + str(int(data[20+DATAOFFSET:22+DATAOFFSET].hex(),16))
 
 		#SA1 SA2 SA3
 		self.SA1_BOOST_V["text"] = "SA1 BOOST V: " + str(int(data[22+DATAOFFSET:24+DATAOFFSET].hex(),16))
@@ -727,7 +729,7 @@ class trackTCP(threading.Thread):
 					gui.updateHealth(data)
 					gui.lastpacketRecieved(now)
 					print("{}".format(data))
-				elif(len(data) > 213):
+				elif(len(data) >= 213):
 					print("Power data")
 					gui.updatePower(data)
 					gui.updateMisc(data)
