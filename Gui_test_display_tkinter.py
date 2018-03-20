@@ -754,7 +754,6 @@ if __name__ == "__main__" :
 
 
 	root = Tk()
-
 	gui = DataGui(root)
 	startup = 0
 
