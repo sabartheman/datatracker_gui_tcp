@@ -19,6 +19,9 @@ test_string_tile = b'\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x00\x00\x00J\x
 
 test_string_power = b'\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\xdb\xdc\x00\x00e\xb7\x00\x00\n\xe2\x00\xc5\x00\xc5\x00\x00\x00\x00\x00\x00\x00\x03\x00\xac\x00\x00\x00\x00\x03\xa7\x02o\x02\x18\x02\x14\x01\xc9\x01\xbf\x02p\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00>\x00\n\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc4\x00\x12\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x0e\x01\x08\x01\x0c\x01\x08\x01\x0c\x01\x08\x02\x13\x02\x19\x02\x12\x02\x17\x02\x12\x02\x19\x81\xff\x82\x00\x81\xf8\x82\x00\x81\xff\x81\xf4S\xb6\xdb\xdc\xdb\xdc\xdb\xdc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0'
 
+
+USB = serial.Serial("COM4", 115200)
+
 key_order = ['BYTES_SENT',
 			 'BYTES_RECIEVED',
 			 '',
@@ -464,7 +467,7 @@ class DataGui(Frame):
 
 
 	def updateTile(self,data):
-		OFFSET = 18
+		OFFSET = 0
 		self.S6_COUNT["text"] = "S6 Count		: " + data[0+OFFSET:3+OFFSET].hex()
 		self.ACT_TILES["text"] = "ACT TILES   	: " + data[3+OFFSET:5+OFFSET].hex()
 		self.FAULTED_TILES["text"] = "FAULTED TILES	: " + data[5+OFFSET:7+OFFSET].hex()
@@ -497,13 +500,13 @@ class DataGui(Frame):
 
 
 	def updateHealth(self,data):
-		OFFSET = 15
+		OFFSET = 0
 
 		### VOLTAGES ###
-		self.VOLTAGE_INS_IN["text"]     = "VOLTAGE_INS_IN: " + str(int(data[2+OFFSET:4+OFFSET].hex(),16)  /1000)+" V"
-		self.VOLTAGE_AVE_IN["text"]     = "VOLTAGE_INS_IN: " + str(int(data[4+OFFSET:6+OFFSET].hex(),16)  /1000)+" V"
-		self.VOLTAGE_MAX_IN["text"]     = "VOLTAGE_INS_IN: " + str(int(data[6+OFFSET:8+OFFSET].hex(),16)  /1000)+" V"
-		self.VOLTAGE_MIN_IN["text"]     = "VOLTAGE_INS_IN: " + str(int(data[8+OFFSET:10+OFFSET].hex(),16) /1000)+" V"
+		self.VOLTAGE_INS_IN["text"]	 = "VOLTAGE_INS_IN: " + str(int(data[2+OFFSET:4+OFFSET].hex(),16)  /1000)+" V"
+		self.VOLTAGE_AVE_IN["text"]	 = "VOLTAGE_INS_IN: " + str(int(data[4+OFFSET:6+OFFSET].hex(),16)  /1000)+" V"
+		self.VOLTAGE_MAX_IN["text"]	 = "VOLTAGE_INS_IN: " + str(int(data[6+OFFSET:8+OFFSET].hex(),16)  /1000)+" V"
+		self.VOLTAGE_MIN_IN["text"]	 = "VOLTAGE_INS_IN: " + str(int(data[8+OFFSET:10+OFFSET].hex(),16) /1000)+" V"
 		self.VOLTAGE_INS_3V3D["text"]   = "VOLTAGE_INS_3V3D: " + str(int(data[10+OFFSET:12+OFFSET].hex(),16)/1000)+" V"
 		self.VOLTAGE_AVE_3V3D["text"]   = "VOLTAGE_INS_3V3D: " + str(int(data[12+OFFSET:14+OFFSET].hex(),16)/1000)+" V"
 		self.VOLTAGE_MAX_3V3D["text"]   = "VOLTAGE_INS_3V3D: " + str(int(data[14+OFFSET:16+OFFSET].hex(),16)/1000)+" V"
@@ -564,7 +567,7 @@ class DataGui(Frame):
 		self.CRC_HEALTH["text"] = "CRC: " + str(int(data[120+OFFSET:122+OFFSET].hex(),16))
 
 	def updatePower(self,data):
-		DATAOFFSET = 12
+		DATAOFFSET = 0
 		POWERROWOFFSET = 10
 
 		#Initial set of data from EPS
@@ -695,63 +698,62 @@ class DataGui(Frame):
 	def lastpacketRecieved(self,data):
 		Label(self, justify=LEFT, wraplength=800, text=data).grid(row=1, column=4,sticky=W)
 
-class trackUART(threading.Thread):
+class readSingle(threading.Thread):
+	#With our current setup in the lab we cannot use the readline method
+	#will not capture the data that we wantself.
+
+	#Also need to make sure that
 	def run(self):
+		try:
+			while(True):
+				data = USB.readline(2)
+				#print(f"{data}")
+				if(data == b'He'):
+					#can't use readline here, will not recieve full chunk of
+					#data from stack
+					#datastring = USB.read(6)	#get rid of radio header
+					datastring = b'He' + USB.read(210)
+					now = datetime.datetime.now().strftime("%I:%M:%S%p on %B %d, %Y")
+					print(f"{now}\nlength {len(datastring)}\ndata: {datastring.hex()}")
+					if(len(datastring) < 110):
+						print("Tile data\n")
+						gui.updateTile(datastring)
+						gui.lastpacketRecieved(now)
 
-		logger = logging.getLogger("benchtop")
-		hdlr = logging.FileHandler('benchtop.log')
-		formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-		hdlr.setFormatter(formatter)
-		logger.addHandler(hdlr)
-		logger.setLevel(logging.INFO)
-		while(True):
-			try:
-				USB = serial.Serial("COM4", 115200, timeout=1.5)
+					elif(len(datastring) < 209):
+						print("Health datastring\n")
+						gui.updateHealth(datastring)
+						gui.lastpacketRecieved(now)
 
-				data = USB.readline(1024)
-				print("data recieved: " + str(data))
-                #logger.info(data)
-				print(len(data))
-				#seperating the different tiers of data
-				if(len(data) < 100 and len(data) > 75):
-					print("Tile data")
-					gui.updateTile(data)
-					#gui.lastpacketRecieved(now)
-					print("{}".format(data))
-				elif(len(data) < 213):
-					print("Health data")
-					gui.updateHealth(data)
-					#gui.lastpacketRecieved(now)
-					print("{}".format(data))
-				elif(len(data) >= 213):
-					print("Power data")
-					gui.updatePower(data)
-					gui.updateMisc(data)
-					#gui.lastpacketRecieved(now)
-					print("{}".format(data.hex()))
-				else:
-					print("Miscellaneous data")
-					gui.updateMisc(data)
-					#gui.lastpacketRecieved(now)
-					print("{}".format(data))
+					elif(len(datastring) >= 209):
+						print("Power datastring\n")
+						gui.updatePower(datastring)
+						gui.updateMisc(datastring)
+						gui.lastpacketRecieved(now)
+
+					else:
+						print("Miscellaneous datastring\n")
+						gui.updateMisc(datastring)
+						gui.lastpacketRecieved(now)
 
 
-			except:
-				print("should be exitiing")
-				USB.close()
-				break
+
+
+		except:
+			USB.close()
+			print("Program exiting")
+			exit()
 
 
 if __name__ == "__main__" :
-	print("test")
-	time = datetime.datetime.now().strftime("%I:%M:%S%p on %B %d, %Y")
 
+	time = datetime.datetime.now().strftime("%I:%M:%S%p on %B %d, %Y")
 
 	root = Tk()
 	gui = DataGui(root)
 	startup = 0
 
-	test = trackUART()
+	test = readSingle()
 	test.start()
 	gui.mainloop()
 

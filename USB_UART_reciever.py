@@ -16,7 +16,7 @@ logger.setLevel(logging.INFO)
 testtext = open("testtext.txt", "w")
 
 #setting up the uart port
-USB = serial.Serial("COM4", 115200,timeout=.01)
+USB = serial.Serial("COM4", 115200,timeout=.1)
 
 #defining what should be global vars
 
@@ -41,11 +41,13 @@ class readUART(threading.Thread):
         global threadrun
         global datarecieved
         global data
+        USB.reset_input_buffer()
         while(threadrun):
             try:
                 data = USB.readline(1024)
                 datarecieved = True
-                print(f"length of data: {len(data)}, data: {data}" )
+                if(len(data) > 40):
+                    print(f"length of data: {len(data)}, data: {data}" )
 
             except:
                 testtext.close()
@@ -68,7 +70,7 @@ class recordData(threading.Thread):
 
                     print("Data recieved: " + str(data))
                     count = count + 1
-                    print(f"logging data, length: {len(data)}\nCount: {count}")
+                    print(f"logging data, length: {len(data)}, Count: {count}")
                     logger.info(len(data))
                     logger.info(data)
                     #resetting the data back to a test figure so that it doesn't
