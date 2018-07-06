@@ -4,7 +4,7 @@ import datetime
 
 
 
-TCP_IP   = "153.90.121.248"
+TCP_IP   = "153.90.121.231"
 TCP_PORT = 3000
 BUFFERSIZE = 1024
 

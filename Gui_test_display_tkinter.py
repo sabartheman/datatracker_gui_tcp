@@ -90,13 +90,13 @@ Coeff['None'] =		 [0,		 1,				  '']
 
 
 
-TCP_IP   = "153.90.121.248"
+TCP_IP   = "153.90.121.231"
 TCP_PORT = 3000
 BUFFERSIZE = 1024
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
-server_address = ('153.90.121.248', 3000)
+server_address = (TCP_IP, TCP_PORT)
 sock.connect(server_address)
 
 

@@ -19,18 +19,37 @@ class DataGui(Frame):
 		self.timevar = StringVar()
 		self.timevar.set("test")
 		self.clock()
-		self.processLoad()
 
 		Label(self,height=3,bg="white", text="Last Recieved: ").grid(row=1, column=3,sticky=W)
 		self.TIMELABEL = Label(self, text="Time:	")
 		self.TIMELABEL.grid(row=1, column=1, sticky=W)
 
+		self.PROCESSORDATA = Label(self, text="None")
+		self.PROCESSORDATA.grid(row=10, column=2, sticky=W)
+
+		self.PROCESSORTEMP = Label(self, text="None")
+		self.PROCESSORTEMP.grid(row=10, column=4, sticky=W)
+
+		self.PROCESSORFREQ = Label(self, text="None")
+		self.PROCESSORFREQ.grid(row=12, column=2, sticky=W)
+
+		self.processLoad()
+
 		self.TILE_DATA = Label(self, text="CPU Load: ")
 		self.TILE_DATA.grid(row=10, column=1,sticky=W)
 		self.S6_COUNT = Label(self, text="CPU Temp: ")
 		self.S6_COUNT.grid(row=10, column=3,sticky=W)
+
+		self.CPU_FREQ = Label(self, text="CPU Freq: ")
+		self.CPU_FREQ.grid(row=11, column=1,sticky=W)
+
+		self.processFREQ()
+
 		self.ACT_TILES = Label(self, text="MEM Load: ")
-		self.ACT_TILES.grid(row=11, column=1,sticky=W)
+		self.ACT_TILES.grid(row=12, column=1,sticky=W)
+
+
+
 
 
 		#self.updatePower(test_string_health)
@@ -73,8 +92,16 @@ class DataGui(Frame):
 
 
 	def processLoad(self):
-		self.TIMELABEL["text"] = psutil.cpu_percent(interval=1)
-		#self.after(500, self.processLoad)
+		self.PROCESSORDATA["text"] = psutil.cpu_percent(percpu=True)
+		self.after(1000, self.processLoad)
+
+	def processTEMP(self):
+		self.PROCESSORTEMP["text"] = psutil.cpu_()
+		self.after(500, self.processLoad)
+
+	def processFREQ(self):
+		self.PROCESSORFREQ["text"] = psutil.cpu_freq(percpu=False)
+		self.after(1000, self.processFREQ)
 
 	def testloop():
 		for i in range(0,10):
