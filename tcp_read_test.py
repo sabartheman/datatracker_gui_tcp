@@ -4,13 +4,13 @@ import datetime
 
 
 
-TCP_IP   = "153.90.121.231"
+TCP_IP   = """(enter up in string here)"""
 TCP_PORT = 3000
 BUFFERSIZE = 1024
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
-server_address = ('153.90.121.248', 3000)
+server_address = ("""(enter up in string here)""", 3000)
 sock.connect(server_address)
 
 #print(sock.listen(1))
