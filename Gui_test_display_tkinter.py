@@ -5,6 +5,7 @@
 #
 
 import sys
+import time
 import socket
 import datetime
 import threading
@@ -13,7 +14,15 @@ from time import sleep
 
 test_string_health = b'\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x13\x00\x00\x00{\xdc3\x1d\x10\x1dB\x1d\x9e\x00\x00\x0c\xea\x0c\xe2\x0c\xea\x0c\xd7\t\xc1\t\xca\t\xd6\t\xbf\x07\x07\x07\x07\x07\x0c\x06\xfa\x03\xe1\x03\xe7\x03\xf1\x03\xda\x03\xb5\x03\xb6\x03\xbb\x03\xb2\t\xc4\t\xa7\n`\x00\x00\x02q\x02q\x02q\x02q\x07\xef\x08r\t\xc4\x07S\x04\xe2\x04\x86\x04\xe2\x04E\x06\xb6\x05\xcd\x06\xb6\x04\xe2\x08\x8b\x08\x8b\x08\x8b\x08\x8b}\xfajR\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0f\x00\x00\x00\x1b\x00\x00\x00%\xcc\xcc\xdc'
 
-test_string_tile = b'\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x05\x00\x00\x00J\xdc\x88\x00\x00\xd7\xe8\x02\x10\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf8\x03\x00\x00\x00\x00\x00\x00\x07\xeb\x07\xeb\x07\xeb\x00\x03\xcc\xcc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xdc\x00\x00\x00\x00\x00\x00\xc0'
+# test_string_tile = b'\x8C\x9A\x9C\x37\x4C\x35\x28\x04\xC5\xA6\x91\x98\xED\xBB\x35\xB1\x7F\xEF\x04\x3E\x0F\x25\x15\xC8\x26\x9C\x42\x68\x4A\x2F\x77\xE8\xD1\x3C\xE8\xBD\x7C\x16\x71\x71\xA6\xD2\xDA\x5C\x83\x0A\xC8\x5A\xC5\x9E\xD4\x62\xF8\x4B'
+
+test_string_tile = "966e9aa6aa4060966e9aa6aa40e103f0050000004a0f000000ee740a000000f4c60000031300008e004207047534000000287500cd40ff88805b76f76bfd8ebcff0808403300e08800000000000000000000000000000000000000000000dc000000000000"
+
+hex_string2 = "966e9aa6aa4060966e9aa6aa40e103f0130000007baed130d0c140fbddf35fc9ebfcef81418e01402820186bf7db7fbddebf3fb08b06ed81008820db76d72b5dcebcff0800483312a08800f7ebf5f23efb5f7a2889ead13092dc50fbddf3dfcbabfeef80808e00402824086bf5db7fbddebf37b0ab06cd810008041b76776bddcebcd70840603790a08810f7ebf5f33e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+
+hex_string3 = "966e9aa6aa4060966e9aa6aa40e103f0c0000077d900000cbe00e800e80000000000000003033d0162016603970277025c026901b301ab027300000000000000800000003a000d0000000000000000000000c7000d00000000000000000000000000000000000000000000000001c501ce01c801ce01ce122a0263025e025f025e025d025f8080808080808081808381abfd34c0c032c082c0c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+
+
 
 test_string_power = b'\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\xdb\xdc\x00\x00e\xb7\x00\x00\n\xe2\x00\xc5\x00\xc5\x00\x00\x00\x00\x00\x00\x00\x03\x00\xac\x00\x00\x00\x00\x03\xa7\x02o\x02\x18\x02\x14\x01\xc9\x01\xbf\x02p\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00>\x00\n\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc4\x00\x12\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x0e\x01\x08\x01\x0c\x01\x08\x01\x0c\x01\x08\x02\x13\x02\x19\x02\x12\x02\x17\x02\x12\x02\x19\x81\xff\x82\x00\x81\xf8\x82\x00\x81\xff\x81\xf4S\xb6\xdb\xdc\xdb\xdc\xdb\xdc\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0'
 
@@ -94,10 +103,10 @@ TCP_IP   = """(enter ip in string here)"""
 TCP_PORT = 3000
 BUFFERSIZE = 1024
 
-sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
-server_address = (TCP_IP, TCP_PORT)
-sock.connect(server_address)
+# sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+# server_address = (TCP_IP, TCP_PORT)
+# sock.connect(server_address)
 
 
 class DataGui(Frame):
@@ -472,34 +481,34 @@ class DataGui(Frame):
 
 
 	def updateTile(self,data):
-		OFFSET = 18
-		self.S6_COUNT["text"] = "S6 Count		: " + data[0+OFFSET:3+OFFSET].hex()
-		self.ACT_TILES["text"] = "ACT TILES   	: " + data[3+OFFSET:5+OFFSET].hex()
-		self.FAULTED_TILES["text"] = "FAULTED TILES	: " + data[5+OFFSET:7+OFFSET].hex()
-		self.FAULTED_COUNT1["text"] = "FAULTED COUNT 1	: " + data[7+OFFSET:9+OFFSET].hex()
-		self.FAULTED_COUNT2["text"] = "FAULTED COUNT 2	: " + data[9+OFFSET:11+OFFSET].hex()
+		OFFSET = 14
+		self.S6_COUNT["text"] = "S6 Count		: " + str((data[0+OFFSET:3+OFFSET]))
+		self.ACT_TILES["text"] = "ACT TILES   	: " + str((data[3+OFFSET:5+OFFSET]))
+		self.FAULTED_TILES["text"] = "FAULTED TILES	: " + str((data[5+OFFSET:7+OFFSET]))
+		self.FAULTED_COUNT1["text"] = "FAULTED COUNT 1	: " + str((data[7+OFFSET:9+OFFSET]))
+		self.FAULTED_COUNT2["text"] = "FAULTED COUNT 2	: " + str((data[9+OFFSET:11+OFFSET]))
 
-		self.FAULTED_COUNT3["text"] = "FAULTED COUNT 3	: " + data[11+OFFSET:13+OFFSET].hex()
-		self.FAULTED_COUNT4["text"] = "FAULTED COUNT 4	: " + data[13+OFFSET:15+OFFSET].hex()
-		self.FAULTED_COUNT5["text"] = "FAULTED COUNT 5	: " + data[15+OFFSET:17+OFFSET].hex()
-		self.FAULTED_COUNT6["text"] = "FAULTED COUNT 6	: " + data[17+OFFSET:19+OFFSET].hex()
-		self.FAULTED_COUNT7["text"] = "FAULTED COUNT 7	: " + data[19+OFFSET:21+OFFSET].hex()
-		self.FAULTED_COUNT8["text"] = "FAULTED COUNT 8	: " + data[23+OFFSET:25+OFFSET].hex()
-		self.FAULTS_INJECTED["text"] = "FAULTS INJECTED	: " + data[25+OFFSET:27+OFFSET].hex()
-		self.TOTAL_FAULTS["text"] = "TOTAL FAULTS	: " + data[27+OFFSET:29+OFFSET].hex()
-		self.MOVE_TILE_COUNT["text"] = "MOVE TILE COUNT	: " + data[29+OFFSET:31+OFFSET].hex()
-		self.NEXT_SPARE["text"] = "NEXT SPARE	: " + data[31+OFFSET:32+OFFSET].hex()
-		self.READBACK_FAULTS["text"] = "Readback Faults	: " + data[33+OFFSET:34+OFFSET].hex()
-		self.WATCHDOG["text"] = "Watchdog		: " +data[34+OFFSET:35+OFFSET].hex()
-		self.ACT_PROC1["text"] = "ACT PROC1	: " + data[35+OFFSET:36+OFFSET].hex()
-		self.ACT_PROC2["text"] = "ACT PROC2	: " + data[36+OFFSET:37+OFFSET].hex()
-		self.ACT_PROC3["text"] = "ACT PROC3	: " + data[37+OFFSET:38+OFFSET].hex()
-		self.ACTPROCCNT1["text"] = "ACTPROCCNT1	: " + data[38+OFFSET:40+OFFSET].hex()
-		self.ACTPROCCNT2["text"] = "ACTPROCCNT2	: " + data[40+OFFSET:42+OFFSET].hex()
-		self.ACTPROCCNT3["text"] = "ACTPROCCNT3	: " + data[42+OFFSET:44+OFFSET].hex()
-		self.VOTER_COUNTS["text"] = "VOTER COUNTS	: " + data[44+OFFSET:46+OFFSET].hex()
-		self.CRC_TILE["text"] = "CRC		: " + data[46+OFFSET:48+OFFSET].hex()
-		self.SYNC["text"] = "SYNC	: " + data[48+OFFSET:49+OFFSET].hex()
+		self.FAULTED_COUNT3["text"] = "FAULTED COUNT 3	: " + str((data[11+OFFSET:13+OFFSET]))
+		self.FAULTED_COUNT4["text"] = "FAULTED COUNT 4	: " + str((data[13+OFFSET:15+OFFSET]))
+		self.FAULTED_COUNT5["text"] = "FAULTED COUNT 5	: " + str((data[15+OFFSET:17+OFFSET]))
+		self.FAULTED_COUNT6["text"] = "FAULTED COUNT 6	: " + str((data[17+OFFSET:19+OFFSET]))
+		self.FAULTED_COUNT7["text"] = "FAULTED COUNT 7	: " + str((data[19+OFFSET:21+OFFSET]))
+		self.FAULTED_COUNT8["text"] = "FAULTED COUNT 8	: " + str((data[23+OFFSET:25+OFFSET]))
+		self.FAULTS_INJECTED["text"] = "FAULTS INJECTED	: " + str((data[25+OFFSET:27+OFFSET]))
+		self.TOTAL_FAULTS["text"] = "TOTAL FAULTS	: " + str((data[27+OFFSET:29+OFFSET]))
+		self.MOVE_TILE_COUNT["text"] = "MOVE TILE COUNT	: " + str((data[29+OFFSET:31+OFFSET]))
+		self.NEXT_SPARE["text"] = "NEXT SPARE	: " + str((data[31+OFFSET:32+OFFSET]))
+		self.READBACK_FAULTS["text"] = "Readback Faults	: " + str((data[33+OFFSET:34+OFFSET]))
+		self.WATCHDOG["text"] = "Watchdog		: " +str((data[34+OFFSET:35+OFFSET]))
+		self.ACT_PROC1["text"] = "ACT PROC1	: " + str((data[35+OFFSET:36+OFFSET]))
+		self.ACT_PROC2["text"] = "ACT PROC2	: " + str((data[36+OFFSET:37+OFFSET]))
+		self.ACT_PROC3["text"] = "ACT PROC3	: " + str((data[37+OFFSET:38+OFFSET]))
+		self.ACTPROCCNT1["text"] = "ACTPROCCNT1	: " + str((data[38+OFFSET:40+OFFSET]))
+		self.ACTPROCCNT2["text"] = "ACTPROCCNT2	: " + str((data[40+OFFSET:42+OFFSET]))
+		self.ACTPROCCNT3["text"] = "ACTPROCCNT3	: " + str((data[42+OFFSET:44+OFFSET]))
+		self.VOTER_COUNTS["text"] = "VOTER COUNTS	: " + str((data[44+OFFSET:46+OFFSET]))
+		self.CRC_TILE["text"] = "CRC		: " + str((data[46+OFFSET:48+OFFSET]))
+		self.SYNC["text"] = "SYNC	: " + str((data[48+OFFSET:49+OFFSET]))
 
 
 
@@ -704,48 +713,72 @@ class DataGui(Frame):
 		Label(self, justify=LEFT, wraplength=800, text=data).grid(row=1, column=4,sticky=W)
 
 
-class trackTCP(threading.Thread):
+# class trackTCP(threading.Thread):
+# 	def run(self):
+# 		while(True):
+# 			try:
+# 				now = datetime.datetime.now().strftime("%I:%M:%S%p on %B %d, %Y")
+# 				s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 				#s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+# 				s.connect((TCP_IP, TCP_PORT))
+# 				data = s.recv(BUFFERSIZE)
+# 				s.close()
+# 				print("--------------------------------------")
+# 				print("	   " + now + "	   ")
+# 				print("--------------------------------------")
+# 				print(len(data))
+# 				#seperating the different tiers of data
+# 				if(len(data) < 100 and len(data) > 75):
+# 					print("Tile data")
+# 					gui.updateTile(data)
+# 					gui.lastpacketRecieved(now)
+# 					print("{}".format(data))
+# 				elif(len(data) < 213):
+# 					print("Health data")
+# 					gui.updateHealth(data)
+# 					gui.lastpacketRecieved(now)
+# 					print("{}".format(data))
+# 				elif(len(data) >= 213):
+# 					print("Power data")
+# 					gui.updatePower(data)
+# 					gui.updateMisc(data)
+# 					gui.lastpacketRecieved(now)
+# 					print("{}".format(data.hex()))
+# 				else:
+# 					print("Miscellaneous data")
+# 					gui.updateMisc(data)
+# 					gui.lastpacketRecieved(now)
+# 					print("{}".format(data))
+#
+#
+# 			except KeyboardInterrupt:
+# 				print("should be exitiing")
+# 				s.close()
+# 				break
+
+
+class testData(threading.Thread):
 	def run(self):
 		while(True):
 			try:
-				now = datetime.datetime.now().strftime("%I:%M:%S%p on %B %d, %Y")
-				s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-				#s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
-				s.connect((TCP_IP, TCP_PORT))
-				data = s.recv(BUFFERSIZE)
-				s.close()
-				print("--------------------------------------")
-				print("	   " + now + "	   ")
-				print("--------------------------------------")
-				print(len(data))
 				#seperating the different tiers of data
-				if(len(data) < 100 and len(data) > 75):
-					print("Tile data")
-					gui.updateTile(data)
-					gui.lastpacketRecieved(now)
-					print("{}".format(data))
-				elif(len(data) < 213):
-					print("Health data")
-					gui.updateHealth(data)
-					gui.lastpacketRecieved(now)
-					print("{}".format(data))
-				elif(len(data) >= 213):
-					print("Power data")
-					gui.updatePower(data)
-					gui.updateMisc(data)
-					gui.lastpacketRecieved(now)
-					print("{}".format(data.hex()))
-				else:
-					print("Miscellaneous data")
-					gui.updateMisc(data)
-					gui.lastpacketRecieved(now)
-					print("{}".format(data))
+				# now = datetime.datetime.now().strftime("%I:%M:%S%p on %B %d, %Y")
+				print("Tile data")
+				gui.updateTile(test_string_tile)
+				print("Health data")
+				gui.updateHealth(hex_string2)
+				print("Power data")
+				gui.updatePower(hex_string3)
+				time.sleep(1000)
 
 
 			except KeyboardInterrupt:
 				print("should be exitiing")
 				s.close()
 				break
+
+
+
 
 
 if __name__ == "__main__" :
@@ -757,7 +790,7 @@ if __name__ == "__main__" :
 	gui = DataGui(root)
 	startup = 0
 
-	test = trackTCP()
+	test = testData()
 	test.start()
 	gui.mainloop()
 
